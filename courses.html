@@ -8,13 +8,644 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%232E4BF2%22/><text x=%2250%22 y=%2266%22 font-size=%2250%22 fill=%22white%22 text-anchor=%22middle%22 font-family=%22sans-serif%22>E</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   EMBTEC KONZULTZ — DESIGN SYSTEM
+   Palette: royal blue / violet / cyan on a warm-white glass surface.
+   Display & Body: Montserrat · Code/mono: JetBrains Mono
+   Signature: the "compiling your future" terminal motif + isometric grid backdrop,
+   used consistently as the site's visual identity across all pages.
+   ========================================================================== */
+
+:root{
+  --blue: #2E4BF2;
+  --blue-dark: #1C2FB8;
+  --violet: #7C3AED;
+  --cyan: #14D8D0;
+  --emerald: #0FAE7C;
+  --amber: #F59E0B;
+  --red: #EF4444;
+
+  --navy: #0B1130;
+  --navy-70: rgba(11,17,48,.7);
+  --navy-50: rgba(11,17,48,.52);
+  --navy-30: rgba(11,17,48,.3);
+
+  --bg: #F6F7FC;
+  --surface: #FFFFFF;
+  --glass: rgba(255,255,255,.66);
+  --glass-strong: rgba(255,255,255,.86);
+  --line: rgba(11,17,48,.09);
+  --line-strong: rgba(11,17,48,.14);
+
+  --grad-brand: linear-gradient(120deg, var(--blue) 0%, var(--violet) 100%);
+  --grad-cyan: linear-gradient(120deg, var(--cyan) 0%, var(--blue) 100%);
+  --grad-mesh: radial-gradient(60% 50% at 12% 8%, rgba(46,75,242,.14) 0%, rgba(46,75,242,0) 60%),
+               radial-gradient(45% 40% at 92% 18%, rgba(124,58,237,.13) 0%, rgba(124,58,237,0) 60%),
+               radial-gradient(55% 45% at 50% 100%, rgba(20,216,208,.10) 0%, rgba(20,216,208,0) 60%);
+
+  --shadow-sm: 0 2px 10px rgba(11,17,48,.05);
+  --shadow-md: 0 12px 32px rgba(11,17,48,.08);
+  --shadow-lg: 0 24px 60px rgba(11,17,48,.14);
+  --shadow-brand: 0 16px 40px rgba(46,75,242,.24);
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  --container: 1220px;
+  --ease: cubic-bezier(.16,.84,.44,1);
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--navy);
+  font-family:'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+h1,h2,h3,h4{
+  font-family:'Montserrat', sans-serif;
+  color:var(--navy);
+  margin:0;
+  letter-spacing:-.02em;
+  line-height:1.08;
+}
+p{ margin:0; }
+a{ color:inherit; text-decoration:none; }
+ul{ margin:0; padding:0; list-style:none; }
+button{ font-family:inherit; cursor:pointer; }
+img{ max-width:100%; display:block; }
+
+.mono{ font-family:'JetBrains Mono', ui-monospace, monospace; }
+
+.container{ max-width:var(--container); margin:0 auto; padding:0 32px; }
+@media (max-width:640px){ .container{ padding:0 20px; } }
+
+section{ position:relative; }
+
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'JetBrains Mono', monospace;
+  font-size:12.5px; font-weight:500; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--blue);
+  background:rgba(46,75,242,.08);
+  border:1px solid rgba(46,75,242,.16);
+  padding:6px 14px 6px 12px;
+  border-radius:100px;
+}
+.eyebrow::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--cyan); box-shadow:0 0 0 3px rgba(20,216,208,.25); }
+
+.section-head{ max-width:640px; margin-bottom:52px; }
+.section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
+.section-head h2{ font-size:clamp(24px,3.4vw,36px); margin-top:16px; }
+.section-head p{ margin-top:16px; font-size:17px; color:var(--navy-70); }
+
+/* ---------- Ambient background: blueprint dot-grid pattern ---------- */
+.ambient{
+  position:fixed; inset:0; z-index:-2; pointer-events:none;
+  background:var(--grad-mesh), var(--bg);
+}
+.ambient::before{
+  content:'';
+  position:absolute; inset:-12%;
+  opacity:.4; /* pattern sits at 60% transparency over the surface */
+  background-image:
+    radial-gradient(rgba(46,75,242,.55) 1.6px, transparent 1.7px),
+    radial-gradient(rgba(124,58,237,.4) 1.6px, transparent 1.7px),
+    linear-gradient(rgba(11,17,48,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11,17,48,.05) 1px, transparent 1px);
+  background-size: 52px 52px, 52px 52px, 26px 26px, 26px 26px;
+  background-position: 0 0, 26px 26px, 0 0, 0 0;
+  mask-image: radial-gradient(75% 65% at 50% 18%, #000 0%, transparent 78%);
+  animation: driftGrid 110s linear infinite;
+}
+.ambient::after{
+  content:'';
+  position:absolute; inset:-12%;
+  opacity:.4; /* pattern sits at 60% transparency over the surface */
+  background-image:
+    linear-gradient(45deg, transparent 48%, rgba(20,216,208,.12) 49%, rgba(20,216,208,.12) 51%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, rgba(46,75,242,.1) 49%, rgba(46,75,242,.1) 51%, transparent 52%);
+  background-size: 104px 104px, 104px 104px;
+  mask-image: radial-gradient(75% 65% at 50% 18%, #000 0%, transparent 78%);
+  animation: driftGrid 110s linear infinite reverse;
+}
+@keyframes driftGrid{ from{ transform:translate3d(0,0,0); } to{ transform:translate3d(-52px,-52px,0); } }
+
+/* ---------- Glass surfaces ---------- */
+.glass{
+  background:var(--glass);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border:1px solid rgba(255,255,255,.7);
+  box-shadow: var(--shadow-md);
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-sm);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+}
+.card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lg); border-color:rgba(46,75,242,.22); }
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:9px;
+  padding:14px 26px;
+  border-radius:100px;
+  font-weight:600; font-size:15px;
+  border:1px solid transparent;
+  transition: transform .28s var(--ease), box-shadow .28s var(--ease), background .28s var(--ease), border-color .28s var(--ease), color .28s var(--ease);
+  white-space:nowrap;
+  position:relative;
+  overflow:hidden;
+}
+.btn:active{ transform:scale(.97); }
+.btn-primary{
+  background:var(--grad-brand); color:#fff;
+  box-shadow: var(--shadow-brand);
+}
+.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 22px 46px rgba(46,75,242,.32); }
+.btn-ghost{
+  background:var(--glass-strong); color:var(--navy);
+  border-color:var(--line-strong);
+}
+.btn-ghost:hover{ border-color:var(--blue); color:var(--blue); transform:translateY(-2px); }
+.btn-sm{ padding:10px 18px; font-size:13.5px; }
+.btn .ico{ width:16px; height:16px; }
+
+.ripple{ position:relative; overflow:hidden; }
+.ripple .ripple-dot{
+  position:absolute; border-radius:50%; background:rgba(255,255,255,.5);
+  transform:scale(0); animation:ripple .6s ease-out;
+  pointer-events:none;
+}
+@keyframes ripple{ to{ transform:scale(3); opacity:0; } }
+
+/* ---------- Header ---------- */
+.site-header{
+  position:sticky; top:0; z-index:100;
+  padding:16px 0;
+  transition: padding .3s var(--ease), box-shadow .3s var(--ease);
+}
+.site-header .bar{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:24px;
+  padding:10px 14px 10px 18px;
+  border-radius:100px;
+}
+.site-header.scrolled{ padding:10px 0; }
+.site-header.scrolled .bar{ box-shadow:var(--shadow-md); }
+
+.brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:17px; }
+.brand-mark{
+  width:34px; height:34px; border-radius:10px;
+  background:var(--grad-brand);
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:15px;
+  box-shadow:var(--shadow-brand);
+}
+.brand-name b{ color:var(--blue); }
+
+.main-nav{ display:flex; align-items:center; gap:6px; }
+.main-nav a{
+  padding:9px 15px; border-radius:100px; font-size:14.5px; font-weight:500; color:var(--navy-70);
+  transition: color .25s var(--ease), background .25s var(--ease);
+}
+.main-nav a:hover, .main-nav a.active{ color:var(--blue); background:rgba(46,75,242,.08); }
+
+.header-actions{ display:flex; align-items:center; gap:10px; }
+.nav-toggle{ display:none; width:42px; height:42px; border-radius:12px; border:1px solid var(--line-strong); background:var(--glass-strong); align-items:center; justify-content:center; }
+.nav-toggle span{ display:block; width:18px; height:2px; background:var(--navy); position:relative; }
+.nav-toggle span::before,.nav-toggle span::after{ content:''; position:absolute; left:0; width:18px; height:2px; background:var(--navy); transition:transform .25s var(--ease); }
+.nav-toggle span::before{ top:-6px; } .nav-toggle span::after{ top:6px; }
+
+@media (max-width:900px){
+  .main-nav{ position:fixed; inset:78px 16px auto 16px; flex-direction:column; align-items:stretch; padding:14px; border-radius:20px; gap:2px;
+    background:var(--glass-strong); backdrop-filter:blur(20px); box-shadow:var(--shadow-lg); border:1px solid var(--line);
+    transform:translateY(-14px); opacity:0; visibility:hidden; transition:all .3s var(--ease); }
+  .main-nav.open{ transform:translateY(0); opacity:1; visibility:visible; }
+  .main-nav a{ padding:13px 16px; }
+  .nav-toggle{ display:flex; }
+  .header-actions .btn-ghost{ display:none; }
+}
+
+/* ---------- Hero / terminal signature ---------- */
+.hero{ padding:64px 0 40px; }
+.hero-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center; }
+@media (max-width:980px){ .hero-grid{ grid-template-columns:1fr; } }
+
+.hero-copy h1{ font-size:clamp(26px,4.6vw,44px); }
+.hero-copy h1 .accent{ background:var(--grad-brand); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.hero-copy p.lead{ margin-top:22px; font-size:18px; color:var(--navy-70); max-width:520px; }
+.hero-cta{ display:flex; align-items:center; gap:14px; margin-top:32px; flex-wrap:wrap; }
+.hero-trust{ display:flex; align-items:center; gap:22px; margin-top:36px; flex-wrap:wrap; }
+.hero-trust .stat b{ display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:22px; }
+.hero-trust .stat span{ font-size:12.5px; color:var(--navy-50); }
+
+.terminal{
+  border-radius:var(--radius-lg);
+  background:linear-gradient(180deg,#0E1330 0%, #0A0E24 100%);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255,255,255,.05) inset;
+  overflow:hidden;
+  position:relative;
+}
+.terminal::after{
+  content:''; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
+  background:linear-gradient(135deg, rgba(46,75,242,.16), transparent 40%);
+}
+.terminal-bar{ display:flex; align-items:center; gap:8px; padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.08); }
+.terminal-bar span{ width:11px; height:11px; border-radius:50%; }
+.terminal-bar span:nth-child(1){ background:#EF4444; } .terminal-bar span:nth-child(2){ background:#F59E0B; } .terminal-bar span:nth-child(3){ background:#0FAE7C; }
+.terminal-bar .t-title{ margin-left:8px; font-family:'JetBrains Mono',monospace; font-size:12px; color:rgba(255,255,255,.4); }
+.terminal-body{ padding:24px 24px 30px; font-family:'JetBrains Mono',monospace; font-size:13.5px; line-height:1.9; color:#CBD3F5; min-height:280px; }
+.terminal-body .muted{ color:rgba(203,211,245,.4); }
+.terminal-body .ok{ color:#4EEBC2; }
+.terminal-body .k{ color:#8EA1FF; }
+.terminal-body .v{ color:#F5C36B; }
+.terminal-cursor{ display:inline-block; width:8px; height:15px; background:var(--cyan); vertical-align:-2px; animation:blink 1s step-end infinite; }
+@keyframes blink{ 50%{ opacity:0; } }
+
+/* ---------- Marquee / logos ---------- */
+.marquee-wrap{ padding:34px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow:hidden; }
+.marquee-label{ text-align:center; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--navy-50); margin-bottom:22px; }
+.marquee{ display:flex; gap:64px; width:max-content; animation:scrollX 26s linear infinite; }
+@keyframes scrollX{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+.marquee .logo-item{ font-family:'Montserrat',sans-serif; font-weight:600; font-size:18px; color:var(--navy-30); white-space:nowrap; display:flex; align-items:center; gap:8px; }
+
+/* ---------- Grids ---------- */
+.grid{ display:grid; gap:24px; }
+.grid-2{ grid-template-columns:repeat(2,1fr); }
+.grid-3{ grid-template-columns:repeat(3,1fr); }
+.grid-4{ grid-template-columns:repeat(4,1fr); }
+@media (max-width:980px){ .grid-3,.grid-4{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px){ .grid-2,.grid-3,.grid-4{ grid-template-columns:1fr; } }
+
+/* ---------- Icon tile ---------- */
+.icon-tile{
+  width:52px; height:52px; border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(46,75,242,.09); color:var(--blue);
+  margin-bottom:18px;
+}
+.icon-tile svg{ width:24px; height:24px; }
+.icon-tile.violet{ background:rgba(124,58,237,.1); color:var(--violet); }
+.icon-tile.cyan{ background:rgba(20,216,208,.13); color:#0AA79F; }
+.icon-tile.amber{ background:rgba(245,158,11,.12); color:#B9770E; }
+
+/* ---------- Mini terminal (per-course signature) ---------- */
+.mini-terminal{
+  border-radius:12px;
+  background:linear-gradient(180deg,#0E1330 0%, #0A0E24 100%);
+  box-shadow:0 10px 24px rgba(11,17,48,.16), 0 0 0 1px rgba(255,255,255,.05) inset;
+  overflow:hidden;
+  margin-bottom:18px;
+  position:relative;
+  height:118px;
+}
+.mini-terminal::after{
+  content:''; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
+  background:linear-gradient(135deg, rgba(46,75,242,.14), transparent 45%);
+}
+.mini-terminal-bar{ display:flex; align-items:center; gap:5px; padding:8px 12px; border-bottom:1px solid rgba(255,255,255,.08); position:relative; z-index:1; }
+.mini-terminal-bar span{ width:7px; height:7px; border-radius:50%; }
+.mini-terminal-bar span:nth-child(1){ background:#EF4444; } .mini-terminal-bar span:nth-child(2){ background:#F59E0B; } .mini-terminal-bar span:nth-child(3){ background:#0FAE7C; }
+.mini-terminal-body{ padding:12px 14px 14px; font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.75; min-height:64px; position:relative; z-index:1; }
+.mt-line{ min-height:1.3em; color:#CBD3F5; white-space:pre-wrap; word-break:break-word; }
+.mt-line.muted{ color:rgba(203,211,245,.45); }
+.mt-line.ok{ color:#4EEBC2; }
+.mt-line .k{ color:#8EA1FF; }
+.mini-cursor{ display:inline-block; width:6px; height:12px; background:var(--cyan); vertical-align:-2px; animation:blink 1s step-end infinite; }
+
+/* ---------- Mini app-interface widgets (per-course signature) ---------- */
+.mini-stage{ border-radius:12px; overflow:hidden; margin-bottom:18px; position:relative; height:118px; box-shadow:0 10px 24px rgba(11,17,48,.14), 0 0 0 1px rgba(255,255,255,.05) inset; }
+
+/* -- Figma-style (UI/UX) -- */
+.fig-stage{ background:#FFFFFF; border:1px solid var(--line-strong); }
+.fig-bar{ display:flex; align-items:center; gap:5px; padding:7px 10px; border-bottom:1px solid var(--line); }
+.fig-bar span{ width:6px; height:6px; border-radius:50%; background:var(--line-strong); }
+.fig-title{ margin-left:6px; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--navy-50); }
+.fig-body{ display:flex; height:calc(100% - 30px); }
+.fig-canvas{
+  flex:1.4; position:relative; overflow:hidden;
+  background-image: radial-gradient(rgba(11,17,48,.14) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+.fig-frame{
+  position:absolute; top:18px; left:14px; width:0; height:0;
+  border:1.5px solid var(--violet); border-radius:3px;
+  background:rgba(124,58,237,.06);
+}
+.fig-frame::before{
+  content: attr(data-label); position:absolute; top:-15px; left:-1px;
+  font-family:'JetBrains Mono',monospace; font-size:8px; color:var(--violet); opacity:0; white-space:nowrap;
+}
+.fig-cursor{
+  position:absolute; top:18px; left:14px; width:8px; height:8px; opacity:0;
+  border-radius:2px 50% 50% 50%; background:var(--blue); transform:rotate(-45deg);
+  box-shadow:0 0 0 3px rgba(46,75,242,.15);
+}
+.mini-stage.play .fig-frame{ animation: figDraw 1.1s var(--ease) forwards .3s; }
+.mini-stage.play .fig-frame::before{ animation: figLabel .3s ease forwards 1.3s; }
+.mini-stage.play .fig-cursor{ animation: figCursor 1.1s var(--ease) forwards .3s; }
+@keyframes figDraw{ 0%{ width:0; height:0; } 100%{ width:62%; height:66%; } }
+@keyframes figLabel{ to{ opacity:1; } }
+@keyframes figCursor{ 0%{ opacity:1; top:18px; left:14px; } 100%{ opacity:1; top:62%; left:66%; } }
+.fig-layers{ flex:1; border-left:1px solid var(--line); padding:8px 10px; display:flex; flex-direction:column; gap:6px; background:#FAFAFD; }
+.fig-layer{
+  font-size:10px; color:var(--navy-70); opacity:0; transform:translateX(6px);
+  padding:3px 6px; border-radius:5px; background:rgba(11,17,48,.04);
+}
+.mini-stage.play .fig-layer{ animation: figLayerIn .4s var(--ease) forwards; }
+.mini-stage.play .fig-layer:nth-child(1){ animation-delay:.15s; }
+.mini-stage.play .fig-layer:nth-child(2){ animation-delay:.35s; }
+.mini-stage.play .fig-layer:nth-child(3){ animation-delay:.55s; }
+@keyframes figLayerIn{ to{ opacity:1; transform:translateX(0); } }
+
+/* -- Photoshop-style (Graphics design) -- */
+.ps-stage{ background:#1B1B1F; }
+.ps-bar{ display:flex; align-items:center; gap:5px; padding:7px 10px; border-bottom:1px solid rgba(255,255,255,.08); }
+.ps-bar span{ width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.18); }
+.ps-title{ margin-left:6px; font-family:'JetBrains Mono',monospace; font-size:10px; color:rgba(255,255,255,.4); }
+.ps-body{ display:flex; height:calc(100% - 30px); }
+.ps-tools{ width:20px; display:flex; flex-direction:column; align-items:center; gap:6px; padding-top:8px; background:rgba(255,255,255,.03); }
+.ps-tool{ width:9px; height:9px; border-radius:3px; background:rgba(255,255,255,.14); }
+.ps-canvas{
+  flex:1; position:relative; overflow:hidden;
+  background-image: conic-gradient(rgba(255,255,255,.06) 90deg, transparent 90deg 180deg, rgba(255,255,255,.06) 180deg 270deg, transparent 270deg);
+  background-size: 10px 10px;
+}
+.ps-art{
+  position:absolute; top:16%; left:12%; width:52%; height:60%; border-radius:6px; opacity:0;
+  background:linear-gradient(135deg, var(--cyan), var(--blue) 60%, var(--violet));
+}
+.ps-marquee{
+  position:absolute; top:16%; left:12%; width:0; height:0; opacity:0;
+  border:1.5px dashed rgba(255,255,255,.7); border-radius:4px;
+}
+.mini-stage.play .ps-art{ animation: psArtIn .5s ease forwards .2s; }
+.mini-stage.play .ps-marquee{ animation: psMarquee 1.2s var(--ease) forwards .55s; }
+@keyframes psArtIn{ to{ opacity:1; } }
+@keyframes psMarquee{ 0%{ opacity:0; width:0; height:0; } 15%{ opacity:1; } 100%{ opacity:1; width:52%; height:60%; } }
+.ps-layers{ width:38%; border-left:1px solid rgba(255,255,255,.08); padding:7px 9px; display:flex; flex-direction:column; gap:6px; }
+.ps-layer{
+  display:flex; align-items:center; gap:5px; font-size:9.5px; color:rgba(255,255,255,.55);
+  opacity:0; transform:translateX(6px);
+}
+.ps-layer .eye{ width:7px; height:7px; border-radius:50%; border:1px solid rgba(20,216,208,.7); flex:none; }
+.mini-stage.play .ps-layer{ animation: figLayerIn .4s var(--ease) forwards; }
+.mini-stage.play .ps-layer:nth-child(1){ animation-delay:.2s; }
+.mini-stage.play .ps-layer:nth-child(2){ animation-delay:.4s; }
+.mini-stage.play .ps-layer:nth-child(3){ animation-delay:.6s; }
+
+/* -- Analytics dashboard (Digital marketing) -- */
+.dash-stage{ background:linear-gradient(180deg,#0E1330 0%, #0A0E24 100%); }
+.dash-bar{ display:flex; align-items:center; gap:5px; padding:7px 10px; border-bottom:1px solid rgba(255,255,255,.08); }
+.dash-bar span{ width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.18); }
+.dash-title{ margin-left:6px; font-family:'JetBrains Mono',monospace; font-size:10px; color:rgba(255,255,255,.4); }
+.dash-body{ position:relative; height:calc(100% - 30px); padding:8px 12px 10px; }
+.dash-chart{ width:100%; height:38px; overflow:visible; }
+.dash-chart polyline{
+  fill:none; stroke:var(--cyan); stroke-width:2; stroke-linecap:round; stroke-linejoin:round;
+  stroke-dasharray:220; stroke-dashoffset:220;
+}
+.mini-stage.play .dash-chart polyline{ animation: dashDraw 1.3s var(--ease) forwards .2s; }
+@keyframes dashDraw{ to{ stroke-dashoffset:0; } }
+.dash-metric{ display:flex; align-items:center; gap:3px; margin-top:6px; font-family:'JetBrains Mono',monospace; font-size:15px; font-weight:600; color:#4EEBC2; }
+.dash-arrow{ font-size:10px; }
+.dash-tags{ display:flex; gap:5px; margin-top:7px; flex-wrap:wrap; }
+.dash-tag{
+  font-family:'JetBrains Mono',monospace; font-size:9px; color:#8EA1FF; background:rgba(46,75,242,.14);
+  border:1px solid rgba(46,75,242,.25); padding:2px 7px; border-radius:100px; opacity:0; transform:translateY(4px);
+}
+.mini-stage.play .dash-tag{ animation: figLayerIn .35s var(--ease) forwards; }
+.mini-stage.play .dash-tag:nth-child(1){ animation-delay:1.1s; }
+.mini-stage.play .dash-tag:nth-child(2){ animation-delay:1.25s; }
+.mini-stage.play .dash-tag:nth-child(3){ animation-delay:1.4s; }
+
+/* -- Excel-style (Microsoft Office) -- */
+.xls-stage{ background:#FFFFFF; border:1px solid var(--line-strong); }
+.xls-bar{ display:flex; align-items:center; gap:5px; padding:7px 10px; border-bottom:1px solid var(--line); background:rgba(15,174,124,.06); }
+.xls-bar span{ width:6px; height:6px; border-radius:50%; background:var(--line-strong); }
+.xls-title{ margin-left:6px; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--emerald); }
+.xls-body{ padding:9px 11px 10px; height:calc(100% - 30px); }
+.xls-formula{ display:flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:10.5px; border:1px solid var(--line-strong); border-radius:6px; padding:4px 8px; background:var(--surface); }
+.xls-formula .fx{ color:var(--emerald); font-style:italic; font-weight:600; }
+.xls-formula-text{ color:var(--navy-70); white-space:nowrap; overflow:hidden; }
+.xls-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:3px; margin-top:8px; }
+.xls-cell{ height:16px; border-radius:3px; background:rgba(11,17,48,.045); }
+.xls-cell.h{ background:rgba(15,174,124,.14); }
+.xls-cell.fill{ background:rgba(46,75,242,.1); }
+.mini-stage.play .xls-cell.fill{ animation: xlsPulse 1.6s ease-in-out infinite 1s; }
+@keyframes xlsPulse{ 0%,100%{ background:rgba(46,75,242,.1); } 50%{ background:rgba(46,75,242,.28); } }
+
+/* -- Office-suite style (Word + Excel + PowerPoint, for team/corporate training) -- */
+.ofc-stage{ background:#FFFFFF; border:1px solid var(--line-strong); }
+.ofc-bar{ display:flex; align-items:center; gap:5px; padding:7px 10px; border-bottom:1px solid var(--line); background:rgba(46,75,242,.05); }
+.ofc-bar span{ width:6px; height:6px; border-radius:50%; background:var(--line-strong); }
+.ofc-title{ margin-left:6px; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--blue); }
+.ofc-body{ padding:10px 12px; height:calc(100% - 30px); display:flex; flex-direction:column; justify-content:center; gap:9px; }
+.ofc-apps{ display:flex; align-items:center; gap:8px; }
+.ofc-app{
+  width:26px; height:26px; border-radius:7px; flex:none;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:#fff;
+  opacity:0; transform:translateX(6px);
+}
+.ofc-app.word{ background:#2B579A; }
+.ofc-app.excel{ background:#1D6F42; }
+.ofc-app.ppt{ background:#C43E1C; }
+.mini-stage.play .ofc-app{ animation: figLayerIn .4s var(--ease) forwards; }
+.mini-stage.play .ofc-app:nth-child(1){ animation-delay:.15s; }
+.mini-stage.play .ofc-app:nth-child(2){ animation-delay:.32s; }
+.mini-stage.play .ofc-app:nth-child(3){ animation-delay:.49s; }
+.ofc-files{ display:flex; flex-direction:column; gap:5px; }
+.ofc-file{
+  display:flex; align-items:center; gap:7px; font-size:9.5px; color:var(--navy-70);
+  background:rgba(11,17,48,.035); border-radius:5px; padding:5px 7px;
+  opacity:0; transform:translateX(6px); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.mini-stage.play .ofc-file{ animation: figLayerIn .4s var(--ease) forwards; }
+.mini-stage.play .ofc-file:nth-child(1){ animation-delay:.62s; }
+.mini-stage.play .ofc-file:nth-child(2){ animation-delay:.76s; }
+.mini-stage.play .ofc-file:nth-child(3){ animation-delay:.9s; }
+.ofc-dot{ width:7px; height:7px; border-radius:2px; flex:none; }
+.ofc-dot.word{ background:#2B579A; } .ofc-dot.excel{ background:#1D6F42; } .ofc-dot.ppt{ background:#C43E1C; }
+
+/* ---------- Pills / badges ---------- */
+.pill{ display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:100px; font-size:12.5px; font-weight:600; }
+.pill-blue{ background:rgba(46,75,242,.09); color:var(--blue); }
+.pill-cyan{ background:rgba(20,216,208,.13); color:#0AA79F; }
+.pill-amber{ background:rgba(245,158,11,.12); color:#B9770E; }
+.pill-emerald{ background:rgba(15,174,124,.12); color:var(--emerald); }
+
+/* ---------- Stats counters ---------- */
+.stat-band{ padding:64px 0; }
+.stat-item{ text-align:center; }
+.stat-item .num{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:clamp(34px,4.4vw,48px); background:var(--grad-brand); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.stat-item .lbl{ margin-top:8px; font-size:14px; color:var(--navy-70); }
+
+/* ---------- Tabs / filters ---------- */
+.filter-row{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px; }
+.filter-chip{
+  padding:10px 18px; border-radius:100px; font-size:13.5px; font-weight:600;
+  background:var(--surface); border:1px solid var(--line-strong); color:var(--navy-70);
+  transition:all .25s var(--ease);
+}
+.filter-chip:hover{ border-color:var(--blue); color:var(--blue); }
+.filter-chip.active{ background:var(--grad-brand); color:#fff; border-color:transparent; box-shadow:var(--shadow-brand); }
+
+/* ---------- Course card ---------- */
+.course-card{ padding:24px; display:flex; flex-direction:column; height:100%; }
+.course-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+.course-card h3{ font-size:19px; margin-top:14px; }
+.course-card .desc{ margin-top:8px; color:var(--navy-70); font-size:14.5px; flex-grow:1; }
+.course-meta{ display:flex; align-items:center; gap:14px; margin-top:18px; font-size:13px; color:var(--navy-50); flex-wrap:wrap; }
+.course-meta .m-item{ display:flex; align-items:center; gap:5px; }
+.course-meta svg{ width:14px; height:14px; }
+.course-foot{ display:flex; align-items:center; justify-content:space-between; margin-top:20px; padding-top:18px; border-top:1px solid var(--line); }
+.price{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:18px; }
+.price small{ font-family:'Montserrat',sans-serif; font-weight:500; font-size:12px; color:var(--navy-50); }
+
+/* ---------- Process / roadmap ---------- */
+.roadmap{ position:relative; }
+.roadmap-line{ position:absolute; left:27px; top:14px; bottom:14px; width:2px; background:linear-gradient(var(--blue),var(--violet),var(--cyan)); opacity:.25; }
+.road-step{ display:flex; gap:22px; padding:26px 0; }
+.road-num{ width:56px; height:56px; flex:none; border-radius:16px; background:var(--surface); border:1px solid var(--line-strong); display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; color:var(--blue); position:relative; z-index:1; }
+.road-body h4{ font-size:18px; } .road-body p{ margin-top:6px; color:var(--navy-70); font-size:14.5px; max-width:560px; }
+
+/* ---------- Testimonial cards ---------- */
+.t-card{ padding:30px; display:flex; flex-direction:column; gap:18px; }
+.t-stars{ display:flex; gap:3px; color:#F5B01B; }
+.t-stars svg{ width:15px; height:15px; }
+.t-quote{ font-size:16.5px; color:var(--navy); line-height:1.65; }
+.t-quote q::before,.t-quote q::after{ content:none; }
+.t-person{ display:flex; align-items:center; gap:12px; margin-top:auto; padding-top:6px; }
+.t-avatar{ width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; color:#fff; font-size:15px; flex:none; }
+.t-person .name{ font-weight:700; font-size:14.5px; }
+.t-person .role{ font-size:12.5px; color:var(--navy-50); }
+.t-result{ display:inline-flex; align-items:center; gap:6px; align-self:flex-start; }
+
+/* ---------- Feature list ---------- */
+.check-list li{ display:flex; align-items:flex-start; gap:10px; padding:8px 0; font-size:14.5px; color:var(--navy-70); }
+.check-list svg{ width:18px; height:18px; flex:none; color:var(--emerald); margin-top:1px; }
+
+/* ---------- Amenity tile ---------- */
+.amenity{ display:flex; align-items:center; gap:14px; padding:18px; border-radius:16px; background:var(--surface); border:1px solid var(--line); }
+.amenity .icon-tile{ margin:0; width:44px; height:44px; border-radius:12px; flex:none; }
+.amenity h4{ font-size:14.5px; } .amenity p{ font-size:12.5px; color:var(--navy-50); margin-top:3px; }
+
+/* ---------- Booking / contact form ---------- */
+.form-panel{ padding:36px; border-radius:var(--radius-xl); }
+.f-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+@media (max-width:560px){ .f-row{ grid-template-columns:1fr; } }
+.f-field{ display:flex; flex-direction:column; gap:7px; }
+.f-field label{ font-size:13px; font-weight:600; color:var(--navy-70); }
+.f-field input, .f-field select, .f-field textarea{
+  padding:13px 15px; border-radius:12px; border:1px solid var(--line-strong);
+  background:#fff; font-family:inherit; font-size:14.5px; color:var(--navy);
+  transition:border-color .25s var(--ease), box-shadow .25s var(--ease);
+}
+.f-field input:focus, .f-field select:focus, .f-field textarea:focus{
+  outline:none; border-color:var(--blue); box-shadow:0 0 0 4px rgba(46,75,242,.12);
+}
+.f-field textarea{ resize:vertical; min-height:100px; }
+
+/* ---------- Accordion (FAQ) ---------- */
+.acc-item{ border-bottom:1px solid var(--line); }
+.acc-head{ display:flex; align-items:center; justify-content:space-between; padding:22px 4px; font-weight:600; font-size:15.5px; }
+.acc-head svg{ width:18px; height:18px; color:var(--blue); transition:transform .3s var(--ease); flex:none; margin-left:16px; }
+.acc-item.open .acc-head svg{ transform:rotate(45deg); }
+.acc-panel{ max-height:0; overflow:hidden; transition:max-height .35s var(--ease); }
+.acc-panel-inner{ padding:0 4px 22px; color:var(--navy-70); font-size:14.5px; max-width:640px; }
+
+/* ---------- Newsletter / final CTA ---------- */
+.cta-band{
+  border-radius:var(--radius-xl);
+  background:linear-gradient(120deg,#141B4D 0%, #1E1470 55%, #0E2E7A 100%);
+  color:#fff; padding:56px; position:relative; overflow:hidden;
+}
+.cta-band::before{ content:''; position:absolute; inset:0; background:var(--grad-mesh); opacity:.5; }
+.cta-band h2{ color:#fff; }
+.cta-band p{ color:rgba(255,255,255,.72); }
+@media (max-width:640px){ .cta-band{ padding:36px 24px; } }
+
+/* ---------- Footer ---------- */
+.site-footer{ margin-top:100px; padding:64px 0 28px; border-top:1px solid var(--line); }
+.foot-grid{ display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:40px; }
+@media (max-width:820px){ .foot-grid{ grid-template-columns:1fr 1fr; } }
+@media (max-width:560px){ .foot-grid{ grid-template-columns:1fr; } }
+.foot-col h5{ font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--navy-50); margin-bottom:16px; }
+.foot-col ul li{ padding:7px 0; }
+.foot-col ul a{ color:var(--navy-70); font-size:14.5px; transition:color .2s var(--ease); }
+.foot-col ul a:hover{ color:var(--blue); }
+.foot-bottom{ display:flex; align-items:center; justify-content:space-between; margin-top:52px; padding-top:24px; border-top:1px solid var(--line); font-size:13px; color:var(--navy-50); flex-wrap:wrap; gap:12px; }
+.social-row{ display:flex; gap:10px; }
+.social-row a{ width:36px; height:36px; border-radius:10px; border:1px solid var(--line-strong); display:flex; align-items:center; justify-content:center; transition:all .25s var(--ease); }
+.social-row a:hover{ border-color:var(--blue); color:var(--blue); transform:translateY(-2px); }
+.social-row svg{ width:16px; height:16px; }
+
+/* ---------- Floating WhatsApp + back to top ---------- */
+.float-actions{ position:fixed; right:22px; bottom:22px; z-index:90; display:flex; flex-direction:column; gap:12px; align-items:flex-end; }
+.fab{
+  width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  box-shadow:var(--shadow-lg); transition:transform .3s var(--ease);
+}
+.fab:hover{ transform:translateY(-3px) scale(1.04); }
+.fab-wa{ background:#25D366; color:#fff; }
+.fab-top{ background:var(--surface); border:1px solid var(--line-strong); color:var(--navy); opacity:0; pointer-events:none; transform:translateY(10px); transition:all .3s var(--ease); }
+.fab-top.show{ opacity:1; pointer-events:auto; transform:translateY(0); }
+.fab svg{ width:22px; height:22px; }
+
+/* ---------- Scroll reveal ---------- */
+.reveal{ opacity:0; transform:translateY(26px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.in{ opacity:1; transform:translateY(0); }
+.reveal-stagger > * { opacity:0; transform:translateY(26px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
+.reveal-stagger.in > *{ opacity:1; transform:translateY(0); }
+.reveal-stagger.in > *:nth-child(1){ transition-delay:.03s; }
+.reveal-stagger.in > *:nth-child(2){ transition-delay:.09s; }
+.reveal-stagger.in > *:nth-child(3){ transition-delay:.15s; }
+.reveal-stagger.in > *:nth-child(4){ transition-delay:.21s; }
+.reveal-stagger.in > *:nth-child(5){ transition-delay:.27s; }
+.reveal-stagger.in > *:nth-child(6){ transition-delay:.33s; }
+.reveal-stagger.in > *:nth-child(7){ transition-delay:.39s; }
+.reveal-stagger.in > *:nth-child(8){ transition-delay:.45s; }
+
+/* ---------- Page hero (inner pages) ---------- */
+.page-hero{ padding:56px 0 48px; text-align:center; }
+.page-hero h1{ font-size:clamp(23px,4.2vw,34px); margin-top:16px; }
+.page-hero p{ max-width:600px; margin:18px auto 0; color:var(--navy-70); font-size:17px; }
+.crumb{ font-size:13px; color:var(--navy-50); margin-bottom:14px; }
+.crumb a:hover{ color:var(--blue); }
+
+.section-pad{ padding:80px 0; }
+@media (max-width:640px){ .section-pad{ padding:56px 0; } }
+
+.skip-link{ position:absolute; left:-999px; top:0; background:var(--blue); color:#fff; padding:12px 18px; border-radius:0 0 10px 0; z-index:200; }
+.skip-link:focus{ left:0; }
+
+:focus-visible{ outline:2.5px solid var(--blue); outline-offset:3px; border-radius:4px; }
+
+</style>
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
 <div class="ambient" aria-hidden="true"></div>
-<div class="cube-field" aria-hidden="true"></div>
 
 <header class="site-header">
   <div class="container">
@@ -62,7 +693,10 @@
         <!-- WEB DEVELOPMENT -->
         <div class="card course-card course-item" data-cat="web-development">
           <div class="course-top"><span class="pill pill-blue">Web Development</span><span class="pill pill-amber">Beginner</span></div>
-          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/></svg></div>
+          <div class="mini-terminal">
+            <div class="mini-terminal-bar"><span></span><span></span><span></span></div>
+            <div class="mini-terminal-body" data-mini-terminal data-lines="[[&quot;cmd&quot;, &quot;code index.html&quot;], [&quot;muted&quot;, &quot;watching style.css, script.js\u2026&quot;], [&quot;ok&quot;, &quot;\u2713 page compiled in 82ms&quot;]]"></div>
+          </div>
           <h3>Frontend Foundations</h3>
           <p class="desc">HTML, CSS, JavaScript and responsive layout — build and publish five real websites from scratch.</p>
           <div class="course-meta">
@@ -74,7 +708,10 @@
 
         <div class="card course-card course-item" data-cat="web-development" id="web-development">
           <div class="course-top"><span class="pill pill-blue">Web Development</span><span class="pill pill-amber">Intermediate</span></div>
-          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/></svg></div>
+          <div class="mini-terminal">
+            <div class="mini-terminal-bar"><span></span><span></span><span></span></div>
+            <div class="mini-terminal-body" data-mini-terminal data-lines="[[&quot;cmd&quot;, &quot;npx create-next-app app&quot;], [&quot;muted&quot;, &quot;installing dependencies\u2026&quot;], [&quot;ok&quot;, &quot;\u2713 ready on localhost:3000&quot;]]"></div>
+          </div>
           <h3>React &amp; Next.js Bootcamp</h3>
           <p class="desc">Component architecture, state, routing and deployment — ship a production-grade React &amp; Next.js app.</p>
           <div class="course-meta">
@@ -86,7 +723,10 @@
 
         <div class="card course-card course-item" data-cat="web-development">
           <div class="course-top"><span class="pill pill-blue">Web Development</span><span class="pill pill-amber">Intermediate</span></div>
-          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+          <div class="mini-terminal">
+            <div class="mini-terminal-bar"><span></span><span></span><span></span></div>
+            <div class="mini-terminal-body" data-mini-terminal data-lines="[[&quot;cmd&quot;, &quot;node server.js&quot;], [&quot;muted&quot;, &quot;connecting to MongoDB\u2026&quot;], [&quot;ok&quot;, &quot;\u2713 API listening on port 5000&quot;]]"></div>
+          </div>
           <h3>Backend with Node &amp; Databases</h3>
           <p class="desc">Node.js, Express, REST APIs and SQL/NoSQL databases — build the engine behind real applications.</p>
           <div class="course-meta">
@@ -98,7 +738,10 @@
 
         <div class="card course-card course-item" data-cat="web-development">
           <div class="course-top"><span class="pill pill-blue">Web Development</span><span class="pill pill-amber">Advanced</span></div>
-          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg></div>
+          <div class="mini-terminal">
+            <div class="mini-terminal-bar"><span></span><span></span><span></span></div>
+            <div class="mini-terminal-body" data-mini-terminal data-lines="[[&quot;cmd&quot;, &quot;php artisan serve&quot;], [&quot;muted&quot;, &quot;running migrations\u2026&quot;], [&quot;ok&quot;, &quot;\u2713 Laravel server started&quot;]]"></div>
+          </div>
           <h3>Full Stack with PHP &amp; Laravel</h3>
           <p class="desc">PHP, Laravel, Git/GitHub workflows and deployment — end-to-end delivery for client and freelance work.</p>
           <div class="course-meta">
@@ -111,7 +754,16 @@
         <!-- UI/UX -->
         <div class="card course-card course-item" data-cat="ui-ux" id="ui-ux">
           <div class="course-top"><span class="pill pill-blue">UI/UX Design</span><span class="pill pill-amber">Beginner</span></div>
-          <div class="icon-tile violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 1 0 10 10M12 2v10l7 7"/></svg></div>
+          <div class="mini-stage fig-stage">
+            <div class="fig-bar"><span></span><span></span><span></span><span class="fig-title">Figma</span></div>
+            <div class="fig-body">
+              <div class="fig-canvas">
+                <div class="fig-frame" data-label="Research"></div>
+                <div class="fig-cursor"></div>
+              </div>
+              <div class="fig-layers"><div class="fig-layer">Persona</div><div class="fig-layer">User flow</div><div class="fig-layer">Wireframe</div></div>
+            </div>
+          </div>
           <h3>UX Research &amp; Wireframing</h3>
           <p class="desc">User research, personas and low-fidelity wireframes — learn to design from evidence, not guesswork.</p>
           <div class="course-meta">
@@ -123,7 +775,16 @@
 
         <div class="card course-card course-item" data-cat="ui-ux">
           <div class="course-top"><span class="pill pill-blue">UI/UX Design</span><span class="pill pill-amber">Intermediate</span></div>
-          <div class="icon-tile violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div>
+          <div class="mini-stage fig-stage">
+            <div class="fig-bar"><span></span><span></span><span></span><span class="fig-title">Figma</span></div>
+            <div class="fig-body">
+              <div class="fig-canvas">
+                <div class="fig-frame" data-label="System"></div>
+                <div class="fig-cursor"></div>
+              </div>
+              <div class="fig-layers"><div class="fig-layer">Button</div><div class="fig-layer">Card</div><div class="fig-layer">Modal</div></div>
+            </div>
+          </div>
           <h3>Figma &amp; Design Systems</h3>
           <p class="desc">Component libraries, auto-layout and design tokens — design once, reuse everywhere.</p>
           <div class="course-meta">
@@ -135,7 +796,16 @@
 
         <div class="card course-card course-item" data-cat="ui-ux">
           <div class="course-top"><span class="pill pill-blue">UI/UX Design</span><span class="pill pill-amber">Advanced</span></div>
-          <div class="icon-tile violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg></div>
+          <div class="mini-stage fig-stage">
+            <div class="fig-bar"><span></span><span></span><span></span><span class="fig-title">Figma</span></div>
+            <div class="fig-body">
+              <div class="fig-canvas">
+                <div class="fig-frame" data-label="Prototype"></div>
+                <div class="fig-cursor"></div>
+              </div>
+              <div class="fig-layers"><div class="fig-layer">Flow A</div><div class="fig-layer">Flow B</div><div class="fig-layer">Test</div></div>
+            </div>
+          </div>
           <h3>Prototyping &amp; Usability Testing</h3>
           <p class="desc">High-fidelity prototypes and moderated usability tests — validate designs before they're built.</p>
           <div class="course-meta">
@@ -148,7 +818,14 @@
         <!-- GRAPHICS -->
         <div class="card course-card course-item" data-cat="graphics-design" id="graphics-design">
           <div class="course-top"><span class="pill pill-blue">Graphics Design</span><span class="pill pill-amber">Beginner</span></div>
-          <div class="icon-tile cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="13.5" cy="6.5" r="2.5"/><path d="M17.5 10.5 3 18l7.5-14.5c1 3 3.5 4.7 7 6"/></svg></div>
+          <div class="mini-stage ps-stage">
+            <div class="ps-bar"><span></span><span></span><span></span><span class="ps-title">Illustrator</span></div>
+            <div class="ps-body">
+              <div class="ps-tools"><span class="ps-tool"></span><span class="ps-tool"></span><span class="ps-tool"></span><span class="ps-tool"></span></div>
+              <div class="ps-canvas"><div class="ps-art"></div><div class="ps-marquee"></div></div>
+              <div class="ps-layers"><div class="ps-layer"><span class="eye"></span>Type</div><div class="ps-layer"><span class="eye"></span>Icon</div><div class="ps-layer"><span class="eye"></span>Logo</div></div>
+            </div>
+          </div>
           <h3>Brand Identity &amp; Logo Design</h3>
           <p class="desc">Adobe Illustrator fundamentals — build a full brand identity system from a single logo concept.</p>
           <div class="course-meta">
@@ -160,7 +837,14 @@
 
         <div class="card course-card course-item" data-cat="graphics-design">
           <div class="course-top"><span class="pill pill-blue">Graphics Design</span><span class="pill pill-amber">Beginner</span></div>
-          <div class="icon-tile cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="mini-stage ps-stage">
+            <div class="ps-bar"><span></span><span></span><span></span><span class="ps-title">Photoshop</span></div>
+            <div class="ps-body">
+              <div class="ps-tools"><span class="ps-tool"></span><span class="ps-tool"></span><span class="ps-tool"></span><span class="ps-tool"></span></div>
+              <div class="ps-canvas"><div class="ps-art"></div><div class="ps-marquee"></div></div>
+              <div class="ps-layers"><div class="ps-layer"><span class="eye"></span>Text</div><div class="ps-layer"><span class="eye"></span>Adjustments</div><div class="ps-layer"><span class="eye"></span>Photo</div></div>
+            </div>
+          </div>
           <h3>Photoshop for Social &amp; Print</h3>
           <p class="desc">Photo editing, compositing and layout — social graphics, flyers and print-ready packaging.</p>
           <div class="course-meta">
@@ -172,7 +856,14 @@
 
         <div class="card course-card course-item" data-cat="graphics-design">
           <div class="course-top"><span class="pill pill-blue">Graphics Design</span><span class="pill pill-amber">Intermediate</span></div>
-          <div class="icon-tile cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6M16 16l5 5m-5 0 5-5"/></svg></div>
+          <div class="mini-stage ps-stage">
+            <div class="ps-bar"><span></span><span></span><span></span><span class="ps-title">CorelDRAW</span></div>
+            <div class="ps-body">
+              <div class="ps-tools"><span class="ps-tool"></span><span class="ps-tool"></span><span class="ps-tool"></span><span class="ps-tool"></span></div>
+              <div class="ps-canvas"><div class="ps-art"></div><div class="ps-marquee"></div></div>
+              <div class="ps-layers"><div class="ps-layer"><span class="eye"></span>Print</div><div class="ps-layer"><span class="eye"></span>Artwork</div><div class="ps-layer"><span class="eye"></span>Dieline</div></div>
+            </div>
+          </div>
           <h3>Packaging &amp; CorelDRAW Production</h3>
           <p class="desc">CorelDRAW production workflows for packaging, labels and large-format print design.</p>
           <div class="course-meta">
@@ -185,7 +876,14 @@
         <!-- MARKETING -->
         <div class="card course-card course-item" data-cat="digital-marketing" id="digital-marketing">
           <div class="course-top"><span class="pill pill-blue">Digital Marketing</span><span class="pill pill-amber">Beginner</span></div>
-          <div class="icon-tile amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l18-7-7 18-2-8-9-3z"/></svg></div>
+          <div class="mini-stage dash-stage">
+            <div class="dash-bar"><span></span><span></span><span></span><span class="dash-title">Search Console</span></div>
+            <div class="dash-body">
+              <svg class="dash-chart" viewBox="0 0 120 40" preserveAspectRatio="none"><polyline points="0,32 20,28 40,30 60,18 80,20 100,8 120,4"/></svg>
+              <div class="dash-metric"><span class="dash-arrow">▲</span><span class="dash-num" data-target="38">0</span>%</div>
+              <div class="dash-tags"><span class="dash-tag">seo</span><span class="dash-tag">keywords</span><span class="dash-tag">backlinks</span></div>
+            </div>
+          </div>
           <h3>SEO &amp; Content Marketing</h3>
           <p class="desc">Keyword research, on-page SEO and content strategy — grow organic traffic that compounds.</p>
           <div class="course-meta">
@@ -197,7 +895,14 @@
 
         <div class="card course-card course-item" data-cat="digital-marketing">
           <div class="course-top"><span class="pill pill-blue">Digital Marketing</span><span class="pill pill-amber">Intermediate</span></div>
-          <div class="icon-tile amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 15l3-4 3 2 4-6"/></svg></div>
+          <div class="mini-stage dash-stage">
+            <div class="dash-bar"><span></span><span></span><span></span><span class="dash-title">Ads Manager</span></div>
+            <div class="dash-body">
+              <svg class="dash-chart" viewBox="0 0 120 40" preserveAspectRatio="none"><polyline points="0,30 20,26 40,27 60,22 80,16 100,14 120,6"/></svg>
+              <div class="dash-metric"><span class="dash-arrow">▲</span><span class="dash-num" data-target="24">0</span>%</div>
+              <div class="dash-tags"><span class="dash-tag">reach</span><span class="dash-tag">clicks</span><span class="dash-tag">CTR</span></div>
+            </div>
+          </div>
           <h3>Google &amp; Meta Ads Management</h3>
           <p class="desc">Campaign structure, targeting and analytics for Google Ads, Facebook and Instagram.</p>
           <div class="course-meta">
@@ -209,7 +914,14 @@
 
         <div class="card course-card course-item" data-cat="digital-marketing">
           <div class="course-top"><span class="pill pill-blue">Digital Marketing</span><span class="pill pill-amber">Beginner</span></div>
-          <div class="icon-tile amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+          <div class="mini-stage dash-stage">
+            <div class="dash-bar"><span></span><span></span><span></span><span class="dash-title">Campaign</span></div>
+            <div class="dash-body">
+              <svg class="dash-chart" viewBox="0 0 120 40" preserveAspectRatio="none"><polyline points="0,34 20,30 40,24 60,25 80,15 100,12 120,4"/></svg>
+              <div class="dash-metric"><span class="dash-arrow">▲</span><span class="dash-num" data-target="47">0</span>%</div>
+              <div class="dash-tags"><span class="dash-tag">opens</span><span class="dash-tag">clicks</span><span class="dash-tag">leads</span></div>
+            </div>
+          </div>
           <h3>Email Marketing &amp; Funnels</h3>
           <p class="desc">List building, automated sequences and conversion-focused email copy that sells.</p>
           <div class="course-meta">
@@ -222,7 +934,13 @@
         <!-- OFFICE -->
         <div class="card course-card course-item" data-cat="microsoft-office" id="microsoft-office">
           <div class="course-top"><span class="pill pill-blue">Microsoft Office</span><span class="pill pill-amber">Beginner</span></div>
-          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></div>
+          <div class="mini-stage xls-stage">
+            <div class="xls-bar"><span></span><span></span><span></span><span class="xls-title">Excel</span></div>
+            <div class="xls-body">
+              <div class="xls-formula"><span class="fx">fx</span><span class="xls-formula-text" data-formula="=SUM(B2:B10)"></span></div>
+              <div class="xls-grid"><div class="xls-cell h"></div><div class="xls-cell h"></div><div class="xls-cell h"></div><div class="xls-cell "></div><div class="xls-cell "></div><div class="xls-cell fill"></div><div class="xls-cell "></div><div class="xls-cell fill"></div><div class="xls-cell "></div></div>
+            </div>
+          </div>
           <h3>Excel for Reporting &amp; Analysis</h3>
           <p class="desc">Formulas, pivot tables and dashboards — turn spreadsheets into decisions.</p>
           <div class="course-meta">
@@ -234,7 +952,20 @@
 
         <div class="card course-card course-item" data-cat="microsoft-office">
           <div class="course-top"><span class="pill pill-blue">Microsoft Office</span><span class="pill pill-amber">Corporate</span></div>
-          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="mini-stage ofc-stage">
+            <div class="ofc-bar"><span></span><span></span><span></span><span class="ofc-title">Office 365</span></div>
+            <div class="ofc-body">
+              <div class="ofc-apps">
+                <span class="ofc-app word">W</span>
+                <span class="ofc-app excel">X</span>
+                <span class="ofc-app ppt">P</span>
+              </div>
+              <div class="ofc-files">
+                <div class="ofc-file"><span class="ofc-dot word"></span>Staff Handbook.docx</div>
+                <div class="ofc-file"><span class="ofc-dot ppt"></span>Onboarding Deck.pptx</div>
+              </div>
+            </div>
+          </div>
           <h3>Office Productivity for Teams</h3>
           <p class="desc">Word, PowerPoint, Publisher and Access, taught on-site for staff teams of any size.</p>
           <div class="course-meta">
@@ -298,6 +1029,310 @@
   <a class="fab fab-wa" href="https://wa.me/2340000000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.6 14.3c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.7-2.8-1-4.6-3.8-4.7-4-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.7 1.9.8 2 .1.2.1.4 0 .6-.1.2-.2.3-.4.5-.2.2-.4.4-.2.7.2.4 1 1.5 2 2.4 1.3 1.1 2.3 1.5 2.7 1.6.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2 0 1.5.7 1.8.8.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg></a>
 </div>
 
-<script src="assets/script.js"></script>
+<script>
+// ============================================================
+// EMBTEC KONZULTZ — shared site behavior
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* Year in footer */
+  document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
+
+
+  /* Sticky header state */
+  const header = document.querySelector('.site-header');
+  const onScroll = () => {
+    if (!header) return;
+    header.classList.toggle('scrolled', window.scrollY > 12);
+    const top = document.querySelector('.fab-top');
+    if (top) top.classList.toggle('show', window.scrollY > 480);
+  };
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* Mobile nav toggle */
+  const navToggle = document.querySelector('.nav-toggle');
+  const mainNav = document.querySelector('.main-nav');
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', () => {
+      const open = mainNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mainNav.classList.remove('open')));
+  }
+
+  /* Back to top */
+  document.querySelector('.fab-top')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* Scroll reveal */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .14, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+
+  /* Animated counters */
+  const counters = document.querySelectorAll('[data-count]');
+  const cio = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const decimals = el.dataset.count.includes('.') ? 1 : 0;
+      const dur = 1400;
+      const start = performance.now();
+      const step = (now) => {
+        const p = Math.min(1, (now - start) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = (target * eased).toFixed(decimals) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      cio.unobserve(el);
+    });
+  }, { threshold: .5 });
+  counters.forEach(el => cio.observe(el));
+
+  /* Ripple buttons */
+  document.querySelectorAll('.ripple').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      const rect = this.getBoundingClientRect();
+      const dot = document.createElement('span');
+      const size = Math.max(rect.width, rect.height);
+      dot.className = 'ripple-dot';
+      dot.style.width = dot.style.height = size + 'px';
+      dot.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      dot.style.top = (e.clientY - rect.top - size / 2) + 'px';
+      this.appendChild(dot);
+      setTimeout(() => dot.remove(), 650);
+    });
+  });
+
+  /* Mouse parallax on hero terminal */
+  const parallaxEl = document.querySelector('[data-parallax]');
+  if (parallaxEl) {
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - .5) * 10;
+      const y = (e.clientY / window.innerHeight - .5) * 10;
+      parallaxEl.style.transform = `rotateY(${x * .4}deg) rotateX(${-y * .4}deg)`;
+    });
+  }
+
+  /* Terminal typing sequence (hero signature element) */
+  const termBody = document.querySelector('[data-terminal]');
+  if (termBody) {
+    const lines = [
+      { html: '<span class="k">embtec</span> compile <span class="v">--path</span>' },
+      { html: '<span class="muted">resolving skill graph for you...</span>' },
+      { html: '<span class="ok">✓</span> learn   → HTML, CSS, JavaScript' },
+      { html: '<span class="ok">✓</span> build   → React &amp; Node projects' },
+      { html: '<span class="ok">✓</span> design  → Figma &amp; UI systems' },
+      { html: '<span class="ok">✓</span> mentor  → weekly 1-on-1 code review' },
+      { html: '<span class="ok">✓</span> ship    → portfolio + certificate' },
+      { html: '<span class="muted">installing coworking-access@latest...</span>' },
+      { html: '<span class="ok">✓</span> desk    → 24/7 studio access unlocked' },
+      { html: '<span class="ok">✓</span> launch  → job-ready in 12 weeks' },
+      { html: '<span class="muted">career.status</span> = <span class="ok">"compiled successfully"</span>' },
+    ];
+    let li = 0;
+    const typeLine = () => {
+      if (li >= lines.length) {
+        const c = document.createElement('div');
+        c.innerHTML = '<span class="k">$</span> <span class="terminal-cursor"></span>';
+        termBody.appendChild(c);
+        return;
+      }
+      const row = document.createElement('div');
+      row.className = 'term-row';
+      termBody.appendChild(row);
+      const text = lines[li].html;
+      // reveal char-by-char but keep tags intact by chunking on tag boundaries
+      const tokens = text.split(/(<[^>]+>)/g);
+      let ti = 0, out = '';
+      const step = () => {
+        if (ti >= tokens.length) { li++; setTimeout(typeLine, 340); return; }
+        const tok = tokens[ti];
+        if (tok.startsWith('<')) { out += tok; ti++; step(); return; }
+        let ci = 0;
+        const typeChar = () => {
+          if (ci < tok.length) { out += tok[ci]; row.innerHTML = out; ci++; setTimeout(typeChar, 14); }
+          else { ti++; step(); }
+        };
+        typeChar();
+      };
+      step();
+    };
+    const tio = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { typeLine(); tio.disconnect(); } });
+    }, { threshold: .4 });
+    tio.observe(termBody);
+  }
+
+  /* Mini terminal typing — one per course card, starts when it scrolls into view */
+  const miniTerms = document.querySelectorAll('[data-mini-terminal]');
+  if (miniTerms.length) {
+    const runMiniTerminal = (el) => {
+      let lines;
+      try { lines = JSON.parse(el.dataset.lines); } catch (err) { return; }
+      let li = 0;
+      const typeNext = () => {
+        if (li >= lines.length) {
+          const cursor = document.createElement('span');
+          cursor.className = 'mini-cursor';
+          el.appendChild(cursor);
+          return;
+        }
+        const [type, text] = lines[li];
+        const row = document.createElement('div');
+        row.className = 'mt-line' + (type !== 'cmd' ? ' ' + type : '');
+        if (type === 'cmd') {
+          const prompt = document.createElement('span');
+          prompt.className = 'k';
+          prompt.textContent = '$ ';
+          row.appendChild(prompt);
+        }
+        const textSpan = document.createElement('span');
+        row.appendChild(textSpan);
+        el.appendChild(row);
+        let ci = 0;
+        const speed = type === 'cmd' ? 30 : 16;
+        const typeChar = () => {
+          if (ci < text.length) {
+            textSpan.textContent += text[ci];
+            ci++;
+            setTimeout(typeChar, speed + Math.random() * 16);
+          } else {
+            li++;
+            setTimeout(typeNext, 240);
+          }
+        };
+        typeChar();
+      };
+      setTimeout(typeNext, 150);
+    };
+    const mio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        mio.unobserve(e.target);
+        runMiniTerminal(e.target);
+      });
+    }, { threshold: .4 });
+    miniTerms.forEach(el => mio.observe(el));
+  }
+
+  /* App-interface widgets — Figma / Photoshop / dashboard / Excel, per course card */
+  const appStages = document.querySelectorAll('.mini-stage:not(.mt-code)');
+  if (appStages.length) {
+    const sio = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        sio.unobserve(entry.target);
+        const stage = entry.target;
+        stage.classList.add('play');
+
+        /* Animated counter for dashboard widgets */
+        const num = stage.querySelector('.dash-num');
+        if (num) {
+          const target = parseFloat(num.dataset.target);
+          const start = performance.now();
+          const duration = 1200;
+          const tick = (now) => {
+            const p = Math.min(1, (now - start - 900) / duration);
+            if (p < 0) { requestAnimationFrame(tick); return; }
+            const eased = 1 - Math.pow(1 - p, 3);
+            num.textContent = Math.round(target * eased);
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+
+        /* Formula-bar typewriter for Excel widgets */
+        const formula = stage.querySelector('.xls-formula-text');
+        if (formula) {
+          const text = formula.dataset.formula || '';
+          let ci = 0;
+          const typeChar = () => {
+            if (ci < text.length) {
+              formula.textContent += text[ci];
+              ci++;
+              setTimeout(typeChar, 42);
+            }
+          };
+          setTimeout(typeChar, 350);
+        }
+      });
+    }, { threshold: .4 });
+    appStages.forEach(el => sio.observe(el));
+  }
+
+  /* Course / gallery filters */
+  document.querySelectorAll('[data-filter-group]').forEach(group => {
+    const chips = group.querySelectorAll('.filter-chip');
+    const targetSel = group.dataset.filterGroup;
+    const items = document.querySelectorAll(targetSel);
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        const cat = chip.dataset.cat;
+        items.forEach(it => {
+          const show = cat === 'all' || it.dataset.cat === cat;
+          it.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  });
+
+  /* Accordion (FAQ) */
+  document.querySelectorAll('.acc-item').forEach(item => {
+    const head = item.querySelector('.acc-head');
+    const panel = item.querySelector('.acc-panel');
+    head.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      item.closest('.accordion')?.querySelectorAll('.acc-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.acc-panel').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* Testimonials carousel (simple auto-scroll track) */
+  const track = document.querySelector('[data-t-track]');
+  if (track) {
+    let idx = 0;
+    const cards = track.children.length;
+    const prev = document.querySelector('[data-t-prev]');
+    const next = document.querySelector('[data-t-next]');
+    const go = (dir) => {
+      const cardW = track.children[0].getBoundingClientRect().width + 24;
+      idx = Math.max(0, Math.min(cards - 1, idx + dir));
+      track.scrollTo({ left: idx * cardW, behavior: 'smooth' });
+    };
+    next?.addEventListener('click', () => go(1));
+    prev?.addEventListener('click', () => go(-1));
+  }
+
+  /* Booking / contact form — front-end only demo submit */
+  document.querySelectorAll('[data-demo-form]').forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const original = btn.innerHTML;
+      btn.innerHTML = 'Sending…';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.innerHTML = 'Request sent ✓';
+        setTimeout(() => { btn.innerHTML = original; btn.disabled = false; form.reset(); }, 2200);
+      }, 900);
+    });
+  });
+
+});
+
+</script>
 </body>
 </html>
