@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonials — Embtec Konzultz</title>
+<meta name="description" content="Read stories from Embtec Konzultz graduates and corporate clients across Web Development, UI/UX, Graphics Design, Digital Marketing and Office Space.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%232E4BF2%22/><text x=%2250%22 y=%2266%22 font-size=%2250%22 fill=%22white%22 text-anchor=%22middle%22 font-family=%22sans-serif%22>E</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .video-card{ aspect-ratio:4/5; border-radius:var(--radius-lg); background:linear-gradient(160deg,#0E1330,#1E1470); display:flex; align-items:flex-end; padding:20px; position:relative; overflow:hidden; }
+  .video-card .play{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:56px; height:56px; border-radius:50%; background:rgba(255,255,255,.16); display:flex; align-items:center; justify-content:center; }
+  .video-card .vname{ color:#fff; font-weight:600; font-size:14px; position:relative; z-index:1; }
+  .video-card .vrole{ color:rgba(255,255,255,.6); font-size:12px; position:relative; z-index:1; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<div class="ambient" aria-hidden="true"></div>
+<div class="cube-field" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="container">
+    <div class="bar glass">
+      <a href="index.html" class="brand"><span class="brand-mark">E</span><span class="brand-name">Embtec <b>Konzultz</b></span></a>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="office-space.html">Office Space</a>
+        <a href="testimonials.html" class="active">Testimonials</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="courses.html" class="btn btn-ghost btn-sm">Explore courses</a>
+        <a href="index.html#apply" class="btn btn-primary btn-sm ripple">Apply now</a>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" id="navToggle"><span></span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="container">
+      <p class="crumb"><a href="index.html">Home</a> / Testimonials</p>
+      <span class="eyebrow">Real outcomes</span>
+      <h1>Stories from people who finished what they started.</h1>
+      <p>Students, NYSC members, entrepreneurs and organizations — on what changed after training with Embtec Konzultz.</p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stat-band" style="padding:32px 0 56px;">
+    <div class="container grid grid-4 reveal-stagger">
+      <div class="stat-item"><div class="num" data-count="3200" data-suffix="+">0</div><div class="lbl">Graduates trained</div></div>
+      <div class="stat-item"><div class="num" data-count="94" data-suffix="%">0</div><div class="lbl">Would recommend us</div></div>
+      <div class="stat-item"><div class="num" data-count="180" data-suffix="+">0</div><div class="lbl">Corporate placements</div></div>
+      <div class="stat-item"><div class="num" data-count="4.8" data-suffix="/5">0</div><div class="lbl">Average rating</div></div>
+    </div>
+  </section>
+
+  <!-- FILTERABLE TESTIMONIALS -->
+  <section class="section-pad" style="padding-top:0;">
+    <div class="container">
+      <div class="filter-row" data-filter-group=".t-item">
+        <button class="filter-chip active" data-cat="all">All stories</button>
+        <button class="filter-chip" data-cat="web-development">Web Development</button>
+        <button class="filter-chip" data-cat="ui-ux">UI/UX Design</button>
+        <button class="filter-chip" data-cat="graphics-design">Graphics Design</button>
+        <button class="filter-chip" data-cat="digital-marketing">Digital Marketing</button>
+        <button class="filter-chip" data-cat="office-space">Office Space</button>
+        <button class="filter-chip" data-cat="corporate">Corporate</button>
+      </div>
+
+      <div class="grid grid-3 reveal-stagger">
+
+        <div class="card t-card t-item" data-cat="web-development">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-quote">Six months after the web development track I was freelancing full-time and just signed my first retainer client.</p>
+          <span class="pill pill-emerald t-result">Now freelancing full-time</span>
+          <div class="t-person"><div class="t-avatar" style="background:var(--grad-brand);">CO</div><div><div class="name">Chiamaka O.</div><div class="role">Web Development, 2025 cohort</div></div></div>
+        </div>
+
+        <div class="card t-card t-item" data-cat="ui-ux">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-quote">The UI/UX track pushed me to actually test designs with real users — that's what got me hired at a product team.</p>
+          <span class="pill pill-emerald t-result">Hired as a product designer</span>
+          <div class="t-person"><div class="t-avatar" style="background:var(--grad-cyan);">TA</div><div><div class="name">Tunde A.</div><div class="role">UI/UX Design, NYSC batch</div></div></div>
+        </div>
+
+        <div class="card t-card t-item" data-cat="corporate">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-quote">We sent eight staff through the corporate Microsoft Office track — reporting time dropped noticeably that same month.</p>
+          <span class="pill pill-emerald t-result">Team productivity up</span>
+          <div class="t-person"><div class="t-avatar" style="background:linear-gradient(120deg,#7C3AED,#14D8D0);">FB</div><div><div class="name">Funmi B.</div><div class="role">Operations Lead, corporate client</div></div></div>
+        </div>
+
+        <div class="card t-card t-item" data-cat="graphics-design">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-quote">I walked in only knowing basic Canva. Twelve weeks later I designed the packaging for a client's first product line.</p>
+          <span class="pill pill-emerald t-result">Landed first client project</span>
+          <div class="t-person"><div class="t-avatar" style="background:linear-gradient(120deg,#14D8D0,#2E4BF2);">IK</div><div><div class="name">Ifeoma K.</div><div class="role">Graphics Design graduate</div></div></div>
+        </div>
+
+        <div class="card t-card t-item" data-cat="digital-marketing">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-quote">My small business's Instagram went from 400 to 6,000 followers using exactly what we covered in the ads module.</p>
+          <span class="pill pill-emerald t-result">6,000+ followers gained</span>
+          <div class="t-person"><div class="t-avatar" style="background:linear-gradient(120deg,#F59E0B,#EF4444);">DA</div><div><div class="name">David A.</div><div class="role">Digital Marketing, small business owner</div></div></div>
+        </div>
+
+        <div class="card t-card t-item" data-cat="office-space">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-quote">I use the monthly desk plan for client calls and it's genuinely quieter and faster than working from home.</p>
+          <span class="pill pill-emerald t-result">Monthly desk member</span>
+          <div class="t-person"><div class="t-avatar" style="background:linear-gradient(120deg,#2E4BF2,#0E1330);">RS</div><div><div class="name">Ronke S.</div><div class="role">Freelance consultant, coworking member</div></div></div>
+        </div>
+
+        <div class="card t-card t-item" data-cat="web-development">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-quote">The Laravel track was intense but exactly what I needed to move from tutorials to shipping real client apps.</p>
+          <span class="pill pill-emerald t-result">Shipped 2 client apps</span>
+          <div class="t-person"><div class="t-avatar" style="background:var(--grad-brand);">SM</div><div><div class="name">Segun M.</div><div class="role">Full Stack track graduate</div></div></div>
+        </div>
+
+        <div class="card t-card t-item" data-cat="corporate">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-quote">Embtec ran a two-week digital literacy cohort for our agency's youth program — the feedback from participants was outstanding.</p>
+          <span class="pill pill-emerald t-result">120 participants trained</span>
+          <div class="t-person"><div class="t-avatar" style="background:linear-gradient(120deg,#7C3AED,#2E4BF2);">AY</div><div><div class="name">Amaka Y.</div><div class="role">Program Coordinator, govt. agency</div></div></div>
+        </div>
+
+        <div class="card t-card t-item" data-cat="ui-ux">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-quote">Coming from a graphic design background, the Figma &amp; design systems track filled exactly the gap I needed for product work.</p>
+          <span class="pill pill-emerald t-result">Transitioned into product design</span>
+          <div class="t-person"><div class="t-avatar" style="background:var(--grad-cyan);">NB</div><div><div class="name">Ngozi B.</div><div class="role">UI/UX Design graduate</div></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO PLACEHOLDERS -->
+  <section class="section-pad" style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Watch</span>
+        <h2>Video stories, coming soon.</h2>
+        <p>Short interviews with graduates on what the track was actually like — filming with the next cohort.</p>
+      </div>
+      <div class="grid grid-4 reveal-stagger">
+        <div class="video-card"><div class="play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div><div><div class="vname">Chiamaka O.</div><div class="vrole">Web Development</div></div></div>
+        <div class="video-card" style="background:linear-gradient(160deg,#14D8D0,#0E1330);"><div class="play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div><div><div class="vname">Tunde A.</div><div class="vrole">UI/UX Design</div></div></div>
+        <div class="video-card" style="background:linear-gradient(160deg,#7C3AED,#0E1330);"><div class="play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div><div><div class="vname">Ifeoma K.</div><div class="vrole">Graphics Design</div></div></div>
+        <div class="video-card" style="background:linear-gradient(160deg,#F59E0B,#0E1330);"><div class="play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div><div><div class="vname">David A.</div><div class="vrole">Digital Marketing</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="cta-band reveal" style="text-align:center;">
+        <h2>Your story could be next.</h2>
+        <p style="max-width:480px; margin:12px auto 0;">Applications for the next cohort are open — start with a free skills consultation.</p>
+        <a href="index.html#apply" class="btn btn-primary ripple" style="margin-top:24px; background:#fff; color:var(--blue); box-shadow:none;">Apply now</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a href="index.html" class="brand"><span class="brand-mark">E</span><span class="brand-name">Embtec <b>Konzultz</b></span></a>
+        <p style="margin-top:16px; font-size:14px; color:var(--navy-70); max-width:280px;">Practical technology training and coworking space for students, professionals and organizations in Lagos.</p>
+      </div>
+      <div class="foot-col"><h5>Courses</h5><ul>
+        <li><a href="courses.html#web-development">Web Development</a></li>
+        <li><a href="courses.html#ui-ux">UI/UX Design</a></li>
+        <li><a href="courses.html#graphics-design">Graphics Design</a></li>
+        <li><a href="courses.html#digital-marketing">Digital Marketing</a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Company</h5><ul>
+        <li><a href="office-space.html">Office Space</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#apply">Apply now</a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Office hours</h5><ul>
+        <li style="color:var(--navy-70); font-size:14.5px;">Mon – Fri: 8am – 7pm</li>
+        <li style="color:var(--navy-70); font-size:14.5px;">Saturday: 9am – 4pm</li>
+        <li style="margin-top:8px;"><a href="mailto:hello@embteckonzultz.com">hello@embteckonzultz.com</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span data-year></span> Embtec Konzultz. All rights reserved.</span>
+      <span style="display:flex; gap:18px;"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="float-actions">
+  <a class="fab fab-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
+  <a class="fab fab-wa" href="https://wa.me/2340000000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.6 14.3c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.7-2.8-1-4.6-3.8-4.7-4-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.7 1.9.8 2 .1.2.1.4 0 .6-.1.2-.2.3-.4.5-.2.2-.4.4-.2.7.2.4 1 1.5 2 2.4 1.3 1.1 2.3 1.5 2.7 1.6.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2 0 1.5.7 1.8.8.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg></a>
+</div>
+
+<script src="assets/script.js"></script>
+</body>
+</html>
