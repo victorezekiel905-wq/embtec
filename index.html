@@ -1,1066 +1,557 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-NG">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Embtec Konzultz — Practical Tech Training &amp; Coworking in Lagos</title>
-<meta name="description" content="Embtec Konzultz trains students, graduates, NYSC members and organizations in web development, UI/UX, graphics design and digital marketing — with a coworking office space to build in.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%232E4BF2%22/><text x=%2250%22 y=%2266%22 font-size=%2250%22 fill=%22white%22 text-anchor=%22middle%22 font-family=%22sans-serif%22>E</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-/* ==========================================================================
-   EMBTEC KONZULTZ — DESIGN SYSTEM
-   Palette: royal blue / violet / cyan on a warm-white glass surface.
-   Display & Body: Montserrat · Code/mono: JetBrains Mono
-   Signature: the "compiling your future" terminal motif + isometric grid backdrop,
-   used consistently as the site's visual identity across all pages.
-   ========================================================================== */
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Embtec Konzultz — Computer Training School in Eputu, Ibeju-Lekki, Lagos</title>
+  <meta name="description" content="Hands-on computer training in Eputu, Ibeju-Lekki, Lagos. Learn web design, graphics design, Microsoft Office and databases at Embtec Konzultz — plus cybercafé, printing and photocopy services.">
+  <link rel="canonical" href="https://victorezekiel905-wq.github.io/embtec/">
+  <meta name="theme-color" content="#0c0d12">
 
-:root{
-  --blue: #2E4BF2;
-  --blue-dark: #1C2FB8;
-  --violet: #7C3AED;
-  --cyan: #14D8D0;
-  --emerald: #0FAE7C;
-  --amber: #F59E0B;
-  --red: #EF4444;
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
 
-  --navy: #0B1130;
-  --navy-70: rgba(11,17,48,.7);
-  --navy-50: rgba(11,17,48,.52);
-  --navy-30: rgba(11,17,48,.3);
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Embtec Konzultz">
+  <meta property="og:locale" content="en_NG">
+  <meta property="og:title" content="Embtec Konzultz — From first click to first website">
+  <meta property="og:description" content="Practical computer training in Eputu, Ibeju-Lekki, Lagos: web design, graphics design, Microsoft Office and databases.">
+  <meta property="og:url" content="https://victorezekiel905-wq.github.io/embtec/">
+  <meta property="og:image" content="https://victorezekiel905-wq.github.io/embtec/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 
-  --bg: #F6F7FC;
-  --surface: #FFFFFF;
-  --glass: rgba(255,255,255,.66);
-  --glass-strong: rgba(255,255,255,.86);
-  --line: rgba(11,17,48,.09);
-  --line-strong: rgba(11,17,48,.14);
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="assets/js/main.js" defer></script>
 
-  --grad-brand: linear-gradient(120deg, var(--blue) 0%, var(--violet) 100%);
-  --grad-cyan: linear-gradient(120deg, var(--cyan) 0%, var(--blue) 100%);
-  --grad-mesh: radial-gradient(60% 50% at 12% 8%, rgba(46,75,242,.14) 0%, rgba(46,75,242,0) 60%),
-               radial-gradient(45% 40% at 92% 18%, rgba(124,58,237,.13) 0%, rgba(124,58,237,0) 60%),
-               radial-gradient(55% 45% at 50% 100%, rgba(20,216,208,.10) 0%, rgba(20,216,208,0) 60%);
-
-  --shadow-sm: 0 2px 10px rgba(11,17,48,.05);
-  --shadow-md: 0 12px 32px rgba(11,17,48,.08);
-  --shadow-lg: 0 24px 60px rgba(11,17,48,.14);
-  --shadow-brand: 0 16px 40px rgba(46,75,242,.24);
-
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
-
-  --container: 1220px;
-  --ease: cubic-bezier(.16,.84,.44,1);
-}
-
-*,*::before,*::after{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
-@media (prefers-reduced-motion: reduce){
-  html{ scroll-behavior:auto; }
-  *,*::before,*::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
-}
-
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--navy);
-  font-family:'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size:16px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-
-h1,h2,h3,h4{
-  font-family:'Montserrat', sans-serif;
-  color:var(--navy);
-  margin:0;
-  letter-spacing:-.02em;
-  line-height:1.08;
-}
-p{ margin:0; }
-a{ color:inherit; text-decoration:none; }
-ul{ margin:0; padding:0; list-style:none; }
-button{ font-family:inherit; cursor:pointer; }
-img{ max-width:100%; display:block; }
-
-.mono{ font-family:'JetBrains Mono', ui-monospace, monospace; }
-
-.container{ max-width:var(--container); margin:0 auto; padding:0 32px; }
-@media (max-width:640px){ .container{ padding:0 20px; } }
-
-section{ position:relative; }
-
-.eyebrow{
-  display:inline-flex; align-items:center; gap:8px;
-  font-family:'JetBrains Mono', monospace;
-  font-size:12.5px; font-weight:500; letter-spacing:.06em; text-transform:uppercase;
-  color:var(--blue);
-  background:rgba(46,75,242,.08);
-  border:1px solid rgba(46,75,242,.16);
-  padding:6px 14px 6px 12px;
-  border-radius:100px;
-}
-.eyebrow::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--cyan); box-shadow:0 0 0 3px rgba(20,216,208,.25); }
-
-.section-head{ max-width:640px; margin-bottom:52px; }
-.section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
-.section-head h2{ font-size:clamp(24px,3.4vw,36px); margin-top:16px; }
-.section-head p{ margin-top:16px; font-size:17px; color:var(--navy-70); }
-
-/* ---------- Ambient background: blueprint dot-grid pattern ---------- */
-.ambient{
-  position:fixed; inset:0; z-index:-2; pointer-events:none;
-  background:var(--grad-mesh), var(--bg);
-}
-.ambient::before{
-  content:'';
-  position:absolute; inset:-12%;
-  opacity:.4; /* pattern sits at 60% transparency over the surface */
-  background-image:
-    radial-gradient(rgba(46,75,242,.55) 1.6px, transparent 1.7px),
-    radial-gradient(rgba(124,58,237,.4) 1.6px, transparent 1.7px),
-    linear-gradient(rgba(11,17,48,.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(11,17,48,.05) 1px, transparent 1px);
-  background-size: 52px 52px, 52px 52px, 26px 26px, 26px 26px;
-  background-position: 0 0, 26px 26px, 0 0, 0 0;
-  mask-image: radial-gradient(75% 65% at 50% 18%, #000 0%, transparent 78%);
-  animation: driftGrid 110s linear infinite;
-}
-.ambient::after{
-  content:'';
-  position:absolute; inset:-12%;
-  opacity:.4; /* pattern sits at 60% transparency over the surface */
-  background-image:
-    linear-gradient(45deg, transparent 48%, rgba(20,216,208,.12) 49%, rgba(20,216,208,.12) 51%, transparent 52%),
-    linear-gradient(-45deg, transparent 48%, rgba(46,75,242,.1) 49%, rgba(46,75,242,.1) 51%, transparent 52%);
-  background-size: 104px 104px, 104px 104px;
-  mask-image: radial-gradient(75% 65% at 50% 18%, #000 0%, transparent 78%);
-  animation: driftGrid 110s linear infinite reverse;
-}
-@keyframes driftGrid{ from{ transform:translate3d(0,0,0); } to{ transform:translate3d(-52px,-52px,0); } }
-
-/* ---------- Glass surfaces ---------- */
-.glass{
-  background:var(--glass);
-  backdrop-filter: blur(18px) saturate(1.4);
-  -webkit-backdrop-filter: blur(18px) saturate(1.4);
-  border:1px solid rgba(255,255,255,.7);
-  box-shadow: var(--shadow-md);
-}
-.card{
-  background:var(--surface);
-  border:1px solid var(--line);
-  border-radius:var(--radius-lg);
-  box-shadow:var(--shadow-sm);
-  transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
-}
-.card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lg); border-color:rgba(46,75,242,.22); }
-
-/* ---------- Buttons ---------- */
-.btn{
-  display:inline-flex; align-items:center; justify-content:center; gap:9px;
-  padding:14px 26px;
-  border-radius:100px;
-  font-weight:600; font-size:15px;
-  border:1px solid transparent;
-  transition: transform .28s var(--ease), box-shadow .28s var(--ease), background .28s var(--ease), border-color .28s var(--ease), color .28s var(--ease);
-  white-space:nowrap;
-  position:relative;
-  overflow:hidden;
-}
-.btn:active{ transform:scale(.97); }
-.btn-primary{
-  background:var(--grad-brand); color:#fff;
-  box-shadow: var(--shadow-brand);
-}
-.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 22px 46px rgba(46,75,242,.32); }
-.btn-ghost{
-  background:var(--glass-strong); color:var(--navy);
-  border-color:var(--line-strong);
-}
-.btn-ghost:hover{ border-color:var(--blue); color:var(--blue); transform:translateY(-2px); }
-.btn-sm{ padding:10px 18px; font-size:13.5px; }
-.btn .ico{ width:16px; height:16px; }
-
-.ripple{ position:relative; overflow:hidden; }
-.ripple .ripple-dot{
-  position:absolute; border-radius:50%; background:rgba(255,255,255,.5);
-  transform:scale(0); animation:ripple .6s ease-out;
-  pointer-events:none;
-}
-@keyframes ripple{ to{ transform:scale(3); opacity:0; } }
-
-/* ---------- Header ---------- */
-.site-header{
-  position:sticky; top:0; z-index:100;
-  padding:16px 0;
-  transition: padding .3s var(--ease), box-shadow .3s var(--ease);
-}
-.site-header .bar{
-  display:flex; align-items:center; justify-content:space-between;
-  gap:24px;
-  padding:10px 14px 10px 18px;
-  border-radius:100px;
-}
-.site-header.scrolled{ padding:10px 0; }
-.site-header.scrolled .bar{ box-shadow:var(--shadow-md); }
-
-.brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:17px; }
-.brand-mark{
-  width:34px; height:34px; border-radius:10px;
-  background:var(--grad-brand);
-  display:flex; align-items:center; justify-content:center;
-  color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:15px;
-  box-shadow:var(--shadow-brand);
-}
-.brand-name b{ color:var(--blue); }
-
-.main-nav{ display:flex; align-items:center; gap:6px; }
-.main-nav a{
-  padding:9px 15px; border-radius:100px; font-size:14.5px; font-weight:500; color:var(--navy-70);
-  transition: color .25s var(--ease), background .25s var(--ease);
-}
-.main-nav a:hover, .main-nav a.active{ color:var(--blue); background:rgba(46,75,242,.08); }
-
-.header-actions{ display:flex; align-items:center; gap:10px; }
-.nav-toggle{ display:none; width:42px; height:42px; border-radius:12px; border:1px solid var(--line-strong); background:var(--glass-strong); align-items:center; justify-content:center; }
-.nav-toggle span{ display:block; width:18px; height:2px; background:var(--navy); position:relative; }
-.nav-toggle span::before,.nav-toggle span::after{ content:''; position:absolute; left:0; width:18px; height:2px; background:var(--navy); transition:transform .25s var(--ease); }
-.nav-toggle span::before{ top:-6px; } .nav-toggle span::after{ top:6px; }
-
-@media (max-width:900px){
-  .main-nav{ position:fixed; inset:78px 16px auto 16px; flex-direction:column; align-items:stretch; padding:14px; border-radius:20px; gap:2px;
-    background:var(--glass-strong); backdrop-filter:blur(20px); box-shadow:var(--shadow-lg); border:1px solid var(--line);
-    transform:translateY(-14px); opacity:0; visibility:hidden; transition:all .3s var(--ease); }
-  .main-nav.open{ transform:translateY(0); opacity:1; visibility:visible; }
-  .main-nav a{ padding:13px 16px; }
-  .nav-toggle{ display:flex; }
-  .header-actions .btn-ghost{ display:none; }
-}
-
-/* ---------- Hero / terminal signature ---------- */
-.hero{ padding:64px 0 40px; }
-.hero-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center; }
-@media (max-width:980px){ .hero-grid{ grid-template-columns:1fr; } }
-
-.hero-copy h1{ font-size:clamp(26px,4.6vw,44px); }
-.hero-copy h1 .accent{ background:var(--grad-brand); -webkit-background-clip:text; background-clip:text; color:transparent; }
-.hero-copy p.lead{ margin-top:22px; font-size:18px; color:var(--navy-70); max-width:520px; }
-.hero-cta{ display:flex; align-items:center; gap:14px; margin-top:32px; flex-wrap:wrap; }
-.hero-trust{ display:flex; align-items:center; gap:22px; margin-top:36px; flex-wrap:wrap; }
-.hero-trust .stat b{ display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:22px; }
-.hero-trust .stat span{ font-size:12.5px; color:var(--navy-50); }
-
-.terminal{
-  border-radius:var(--radius-lg);
-  background:linear-gradient(180deg,#0E1330 0%, #0A0E24 100%);
-  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255,255,255,.05) inset;
-  overflow:hidden;
-  position:relative;
-}
-.terminal::after{
-  content:''; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
-  background:linear-gradient(135deg, rgba(46,75,242,.16), transparent 40%);
-}
-.terminal-bar{ display:flex; align-items:center; gap:8px; padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.08); }
-.terminal-bar span{ width:11px; height:11px; border-radius:50%; }
-.terminal-bar span:nth-child(1){ background:#EF4444; } .terminal-bar span:nth-child(2){ background:#F59E0B; } .terminal-bar span:nth-child(3){ background:#0FAE7C; }
-.terminal-bar .t-title{ margin-left:8px; font-family:'JetBrains Mono',monospace; font-size:12px; color:rgba(255,255,255,.4); }
-.terminal-body{ padding:24px 24px 30px; font-family:'JetBrains Mono',monospace; font-size:13.5px; line-height:1.9; color:#CBD3F5; min-height:280px; }
-.terminal-body .muted{ color:rgba(203,211,245,.4); }
-.terminal-body .ok{ color:#4EEBC2; }
-.terminal-body .k{ color:#8EA1FF; }
-.terminal-body .v{ color:#F5C36B; }
-.terminal-cursor{ display:inline-block; width:8px; height:15px; background:var(--cyan); vertical-align:-2px; animation:blink 1s step-end infinite; }
-@keyframes blink{ 50%{ opacity:0; } }
-
-/* ---------- Marquee / logos ---------- */
-.marquee-wrap{ padding:34px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow:hidden; }
-.marquee-label{ text-align:center; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--navy-50); margin-bottom:22px; }
-.marquee{ display:flex; gap:64px; width:max-content; animation:scrollX 26s linear infinite; }
-@keyframes scrollX{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
-.marquee .logo-item{ font-family:'Montserrat',sans-serif; font-weight:600; font-size:18px; color:var(--navy-30); white-space:nowrap; display:flex; align-items:center; gap:8px; }
-
-/* ---------- Grids ---------- */
-.grid{ display:grid; gap:24px; }
-.grid-2{ grid-template-columns:repeat(2,1fr); }
-.grid-3{ grid-template-columns:repeat(3,1fr); }
-.grid-4{ grid-template-columns:repeat(4,1fr); }
-@media (max-width:980px){ .grid-3,.grid-4{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width:640px){ .grid-2,.grid-3,.grid-4{ grid-template-columns:1fr; } }
-
-/* ---------- Icon tile ---------- */
-.icon-tile{
-  width:52px; height:52px; border-radius:14px;
-  display:flex; align-items:center; justify-content:center;
-  background:rgba(46,75,242,.09); color:var(--blue);
-  margin-bottom:18px;
-}
-.icon-tile svg{ width:24px; height:24px; }
-.icon-tile.violet{ background:rgba(124,58,237,.1); color:var(--violet); }
-.icon-tile.cyan{ background:rgba(20,216,208,.13); color:#0AA79F; }
-.icon-tile.amber{ background:rgba(245,158,11,.12); color:#B9770E; }
-.icon-tile.office-trio{ background:rgba(11,17,48,.04); gap:5px; }
-.office-mini{
-  width:17px; height:17px; border-radius:5px; flex:none;
-  display:flex; align-items:center; justify-content:center;
-  font-family:'Montserrat',sans-serif; font-weight:700; font-size:8.5px; color:#fff;
-}
-.office-mini.word{ background:#2B579A; }
-.office-mini.excel{ background:#1D6F42; }
-.office-mini.ppt{ background:#C43E1C; }
-
-/* ---------- Pills / badges ---------- */
-.pill{ display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:100px; font-size:12.5px; font-weight:600; }
-.pill-blue{ background:rgba(46,75,242,.09); color:var(--blue); }
-.pill-cyan{ background:rgba(20,216,208,.13); color:#0AA79F; }
-.pill-amber{ background:rgba(245,158,11,.12); color:#B9770E; }
-.pill-emerald{ background:rgba(15,174,124,.12); color:var(--emerald); }
-
-/* ---------- Stats counters ---------- */
-.stat-band{ padding:64px 0; }
-.stat-item{ text-align:center; }
-.stat-item .num{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:clamp(34px,4.4vw,48px); background:var(--grad-brand); -webkit-background-clip:text; background-clip:text; color:transparent; }
-.stat-item .lbl{ margin-top:8px; font-size:14px; color:var(--navy-70); }
-
-/* ---------- Tabs / filters ---------- */
-.filter-row{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px; }
-.filter-chip{
-  padding:10px 18px; border-radius:100px; font-size:13.5px; font-weight:600;
-  background:var(--surface); border:1px solid var(--line-strong); color:var(--navy-70);
-  transition:all .25s var(--ease);
-}
-.filter-chip:hover{ border-color:var(--blue); color:var(--blue); }
-.filter-chip.active{ background:var(--grad-brand); color:#fff; border-color:transparent; box-shadow:var(--shadow-brand); }
-
-/* ---------- Course card ---------- */
-.course-card{ padding:24px; display:flex; flex-direction:column; height:100%; }
-.course-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
-.course-card h3{ font-size:19px; margin-top:14px; }
-.course-card .desc{ margin-top:8px; color:var(--navy-70); font-size:14.5px; flex-grow:1; }
-.course-meta{ display:flex; align-items:center; gap:14px; margin-top:18px; font-size:13px; color:var(--navy-50); flex-wrap:wrap; }
-.course-meta .m-item{ display:flex; align-items:center; gap:5px; }
-.course-meta svg{ width:14px; height:14px; }
-.course-foot{ display:flex; align-items:center; justify-content:space-between; margin-top:20px; padding-top:18px; border-top:1px solid var(--line); }
-.price{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:18px; }
-.price small{ font-family:'Montserrat',sans-serif; font-weight:500; font-size:12px; color:var(--navy-50); }
-
-/* ---------- Process / roadmap ---------- */
-.roadmap{ position:relative; }
-.roadmap-line{ position:absolute; left:27px; top:14px; bottom:14px; width:2px; background:linear-gradient(var(--blue),var(--violet),var(--cyan)); opacity:.25; }
-.road-step{ display:flex; gap:22px; padding:26px 0; }
-.road-num{ width:56px; height:56px; flex:none; border-radius:16px; background:var(--surface); border:1px solid var(--line-strong); display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; color:var(--blue); position:relative; z-index:1; }
-.road-body h4{ font-size:18px; } .road-body p{ margin-top:6px; color:var(--navy-70); font-size:14.5px; max-width:560px; }
-.roadmap-visual{ position:sticky; top:110px; align-self:start; }
-.roadmap-visual .card img{ height:520px; }
-@media (max-width:980px){ .roadmap-visual{ position:static; } .roadmap-visual .card img{ height:320px; } }
-
-/* ---------- Testimonial cards ---------- */
-.t-card{ padding:30px; display:flex; flex-direction:column; gap:18px; }
-.t-stars{ display:flex; gap:3px; color:#F5B01B; }
-.t-stars svg{ width:15px; height:15px; }
-.t-quote{ font-size:16.5px; color:var(--navy); line-height:1.65; }
-.t-quote q::before,.t-quote q::after{ content:none; }
-.t-person{ display:flex; align-items:center; gap:12px; margin-top:auto; padding-top:6px; }
-.t-avatar{ width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; color:#fff; font-size:15px; flex:none; }
-.t-person .name{ font-weight:700; font-size:14.5px; }
-.t-person .role{ font-size:12.5px; color:var(--navy-50); }
-.t-result{ display:inline-flex; align-items:center; gap:6px; align-self:flex-start; }
-
-/* ---------- Feature list ---------- */
-.check-list li{ display:flex; align-items:flex-start; gap:10px; padding:8px 0; font-size:14.5px; color:var(--navy-70); }
-.check-list svg{ width:18px; height:18px; flex:none; color:var(--emerald); margin-top:1px; }
-
-/* ---------- Amenity tile ---------- */
-.amenity{ display:flex; align-items:center; gap:14px; padding:18px; border-radius:16px; background:var(--surface); border:1px solid var(--line); }
-.amenity .icon-tile{ margin:0; width:44px; height:44px; border-radius:12px; flex:none; }
-.amenity h4{ font-size:14.5px; } .amenity p{ font-size:12.5px; color:var(--navy-50); margin-top:3px; }
-
-/* ---------- Booking / contact form ---------- */
-.form-panel{ padding:36px; border-radius:var(--radius-xl); }
-.f-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
-@media (max-width:560px){ .f-row{ grid-template-columns:1fr; } }
-.f-field{ display:flex; flex-direction:column; gap:7px; }
-.f-field label{ font-size:13px; font-weight:600; color:var(--navy-70); }
-.f-field input, .f-field select, .f-field textarea{
-  padding:13px 15px; border-radius:12px; border:1px solid var(--line-strong);
-  background:#fff; font-family:inherit; font-size:14.5px; color:var(--navy);
-  transition:border-color .25s var(--ease), box-shadow .25s var(--ease);
-}
-.f-field input:focus, .f-field select:focus, .f-field textarea:focus{
-  outline:none; border-color:var(--blue); box-shadow:0 0 0 4px rgba(46,75,242,.12);
-}
-.f-field textarea{ resize:vertical; min-height:100px; }
-
-/* ---------- Accordion (FAQ) ---------- */
-.acc-item{ border-bottom:1px solid var(--line); }
-.acc-head{ display:flex; align-items:center; justify-content:space-between; padding:22px 4px; font-weight:600; font-size:15.5px; }
-.acc-head svg{ width:18px; height:18px; color:var(--blue); transition:transform .3s var(--ease); flex:none; margin-left:16px; }
-.acc-item.open .acc-head svg{ transform:rotate(45deg); }
-.acc-panel{ max-height:0; overflow:hidden; transition:max-height .35s var(--ease); }
-.acc-panel-inner{ padding:0 4px 22px; color:var(--navy-70); font-size:14.5px; max-width:640px; }
-
-/* ---------- Newsletter / final CTA ---------- */
-.cta-band{
-  border-radius:var(--radius-xl);
-  background:linear-gradient(120deg,#141B4D 0%, #1E1470 55%, #0E2E7A 100%);
-  color:#fff; padding:56px; position:relative; overflow:hidden;
-}
-.cta-band::before{ content:''; position:absolute; inset:0; background:var(--grad-mesh); opacity:.5; }
-.cta-band h2{ color:#fff; }
-.cta-band p{ color:rgba(255,255,255,.72); }
-@media (max-width:640px){ .cta-band{ padding:36px 24px; } }
-
-/* ---------- Footer ---------- */
-.site-footer{ margin-top:100px; padding:64px 0 28px; border-top:1px solid var(--line); }
-.foot-grid{ display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:40px; }
-@media (max-width:820px){ .foot-grid{ grid-template-columns:1fr 1fr; } }
-@media (max-width:560px){ .foot-grid{ grid-template-columns:1fr; } }
-.foot-col h5{ font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--navy-50); margin-bottom:16px; }
-.foot-col ul li{ padding:7px 0; }
-.foot-col ul a{ color:var(--navy-70); font-size:14.5px; transition:color .2s var(--ease); }
-.foot-col ul a:hover{ color:var(--blue); }
-.foot-bottom{ display:flex; align-items:center; justify-content:space-between; margin-top:52px; padding-top:24px; border-top:1px solid var(--line); font-size:13px; color:var(--navy-50); flex-wrap:wrap; gap:12px; }
-.social-row{ display:flex; gap:10px; }
-.social-row a{ width:36px; height:36px; border-radius:10px; border:1px solid var(--line-strong); display:flex; align-items:center; justify-content:center; transition:all .25s var(--ease); }
-.social-row a:hover{ border-color:var(--blue); color:var(--blue); transform:translateY(-2px); }
-.social-row svg{ width:16px; height:16px; }
-
-/* ---------- Floating WhatsApp + back to top ---------- */
-.float-actions{ position:fixed; right:22px; bottom:22px; z-index:90; display:flex; flex-direction:column; gap:12px; align-items:flex-end; }
-.fab{
-  width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-  box-shadow:var(--shadow-lg); transition:transform .3s var(--ease);
-}
-.fab:hover{ transform:translateY(-3px) scale(1.04); }
-.fab-wa{ background:#25D366; color:#fff; }
-.fab-top{ background:var(--surface); border:1px solid var(--line-strong); color:var(--navy); opacity:0; pointer-events:none; transform:translateY(10px); transition:all .3s var(--ease); }
-.fab-top.show{ opacity:1; pointer-events:auto; transform:translateY(0); }
-.fab svg{ width:22px; height:22px; }
-
-/* ---------- Scroll reveal ---------- */
-.reveal{ opacity:0; transform:translateY(26px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
-.reveal.in{ opacity:1; transform:translateY(0); }
-.reveal-stagger > * { opacity:0; transform:translateY(26px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
-.reveal-stagger.in > *{ opacity:1; transform:translateY(0); }
-.reveal-stagger.in > *:nth-child(1){ transition-delay:.03s; }
-.reveal-stagger.in > *:nth-child(2){ transition-delay:.09s; }
-.reveal-stagger.in > *:nth-child(3){ transition-delay:.15s; }
-.reveal-stagger.in > *:nth-child(4){ transition-delay:.21s; }
-.reveal-stagger.in > *:nth-child(5){ transition-delay:.27s; }
-.reveal-stagger.in > *:nth-child(6){ transition-delay:.33s; }
-.reveal-stagger.in > *:nth-child(7){ transition-delay:.39s; }
-.reveal-stagger.in > *:nth-child(8){ transition-delay:.45s; }
-
-/* ---------- Page hero (inner pages) ---------- */
-.page-hero{ padding:22px 0 40px; text-align:center; }
-.page-hero h1{ font-size:clamp(23px,4.2vw,34px); margin-top:16px; }
-.page-hero p{ max-width:600px; margin:18px auto 0; color:var(--navy-70); font-size:17px; }
-.crumb{ font-size:13px; color:var(--navy-50); margin-bottom:10px; }
-.crumb a:hover{ color:var(--blue); }
-
-.section-pad{ padding:80px 0; }
-@media (max-width:640px){ .section-pad{ padding:56px 0; } }
-
-.skip-link{ position:absolute; left:-999px; top:0; background:var(--blue); color:#fff; padding:12px 18px; border-radius:0 0 10px 0; z-index:200; }
-.skip-link:focus{ left:0; }
-
-:focus-visible{ outline:2.5px solid var(--blue); outline-offset:3px; border-radius:4px; }
-
-</style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["EducationalOrganization", "LocalBusiness"],
+    "name": "Embtec Konzultz",
+    "alternateName": "Embtec Konzultz Computer School",
+    "description": "ICT training centre in Eputu, Ibeju-Lekki, Lagos offering web design, graphics design, Microsoft Office and database training, plus cybercafé, printing, photocopy and financial advisory services.",
+    "url": "https://victorezekiel905-wq.github.io/embtec/",
+    "logo": "https://victorezekiel905-wq.github.io/embtec/assets/img/icon-512.png",
+    "image": "https://victorezekiel905-wq.github.io/embtec/assets/img/og-image.jpg",
+    "telephone": "+2348029596214",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Ogunfayo Road",
+      "addressLocality": "Eputu Town, Ibeju-Lekki",
+      "addressRegion": "Lagos",
+      "postalCode": "105101",
+      "addressCountry": "NG"
+    },
+    "areaServed": "Ibeju-Lekki, Lagos",
+    "sameAs": [
+      "https://www.facebook.com/embteckonzultzICT/",
+      "https://www.instagram.com/embteckonzultz/",
+      "https://www.youtube.com/@embteckonzultzcomputerscho2784"
+    ]
+  }
+  </script>
 </head>
 <body>
-<a href="#main" class="skip-link">Skip to content</a>
-<div class="ambient" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- ============ HEADER ============ -->
-<header class="site-header">
-  <div class="container">
-    <div class="bar glass">
-      <a href="index.html" class="brand">
-        <span class="brand-mark">E</span>
-        <span class="brand-name">Embtec <b>Konzultz</b></span>
-      </a>
-      <nav class="main-nav" id="mainNav">
-        <a href="index.html" class="active">Home</a>
-        <a href="courses.html">Courses</a>
-        <a href="office-space.html">Office Space</a>
-        <a href="testimonials.html">Testimonials</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="header-actions">
-        <a href="courses.html" class="btn btn-ghost btn-sm">Explore courses</a>
-        <a href="#apply" class="btn btn-primary btn-sm ripple">Apply now</a>
-        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" id="navToggle"><span></span></button>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></g></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></g></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></g></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></g></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></g></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9 10h.01M12 10h.01M15 10h.01"/></g></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/></g></symbol>
+    <symbol id="i-printer" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></g></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></g></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></g></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></g></symbol>
+    <symbol id="i-quote" viewBox="0 0 24 24"><path fill="currentColor" d="M3 21c3 0 7-1 7-8V5c0-1.25-.76-2.02-2-2H4c-1.25 0-2 .75-2 1.97V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .01-1 1.03V20c0 1 0 1 1 1zm12 0c3 0 7-1 7-8V5c0-1.25-.76-2.02-2-2h-4c-1.25 0-2 .75-2 1.97V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M9.1 23.69v-7.98H6.63v-3.67H9.1v-1.58c0-4.09 1.85-5.98 5.86-5.98.4 0 .96.04 1.47.1.39.04.77.11 1.14.2v3.32c-.22-.02-.44-.03-.65-.04-.24 0-.49-.01-.73-.01-.71 0-1.26.1-1.68.31-.28.14-.51.35-.68.62-.26.42-.37.99-.37 1.75v1.3h3.92l-.39 2.1-.29 1.56h-3.25v8.25C19.4 23.24 24 18.18 24 12.04c0-6.63-5.37-12-12-12s-12 5.37-12 12c0 5.63 3.87 10.35 9.1 11.65Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></g></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.87.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-shell">
+        <a class="brand" href="index.html" aria-label="Embtec Konzultz — home">
+          <img src="assets/img/logo.webp" alt="Embtec Konzultz" width="514" height="215">
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a href="index.html" aria-current="page">Home</a>
+          <a href="courses.html">Courses</a>
+          <a href="index.html#lab">The lab</a>
+          <a href="index.html#services">Services</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="nav-phone" href="tel:+2348029596214"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span>0802&nbsp;959&nbsp;6214</span></a>
+          <a class="btn btn--ink btn--sm" href="https://wa.me/2348029596214?text=Hello%20Embtec%20Konzultz%2C%20I%20would%20like%20to%20enrol%20for%20a%20course." target="_blank" rel="noopener">Enrol now</a>
+        </div>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><span class="bars"></span></button>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<main id="main">
-
-  <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-copy reveal in">
-        <span class="eyebrow">Lagos · Practical Tech Training</span>
-        <h1>Skills that <span class="accent">compile</span> into careers.</h1>
-        <p class="lead">Embtec Konzultz trains students, graduates, NYSC members and organizations in web development, UI/UX, graphics design and digital marketing — then hands you a coworking desk to keep building after class ends.</p>
-        <div class="hero-cta">
-          <a href="#apply" class="btn btn-primary ripple">
-            Start your application
-            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-          <a href="courses.html" class="btn btn-ghost ripple">Browse all courses</a>
-        </div>
-        <div class="hero-trust">
-          <div class="stat"><b data-count="3200" data-suffix="+">0</b><span>Graduates trained</span></div>
-          <div class="stat"><b data-count="94" data-suffix="%">0</b><span>Course completion rate</span></div>
-          <div class="stat"><b data-count="6" data-suffix="">0</b><span>Skill tracks</span></div>
-        </div>
-      </div>
-
-      <div class="hero-visual" data-parallax style="transform-style:preserve-3d;">
-        <div class="terminal">
-          <div class="terminal-bar">
-            <span></span><span></span><span></span>
-            <span class="t-title mono">embtec — career-compiler</span>
-          </div>
-          <div class="terminal-body" data-terminal></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ MARQUEE ============ -->
-  <div class="marquee-wrap">
-    <p class="marquee-label mono">Trusted by teams &amp; graduates now building at</p>
-    <div class="marquee" aria-hidden="true">
-      <div class="logo-item">Paystack</div><div class="logo-item">Flutterwave-style Fintechs</div><div class="logo-item">Interswitch</div><div class="logo-item">Andela Network</div><div class="logo-item">Konga</div><div class="logo-item">Local Govt. Agencies</div><div class="logo-item">SME Clusters</div>
-      <div class="logo-item">Paystack</div><div class="logo-item">Flutterwave-style Fintechs</div><div class="logo-item">Interswitch</div><div class="logo-item">Andela Network</div><div class="logo-item">Konga</div><div class="logo-item">Local Govt. Agencies</div><div class="logo-item">SME Clusters</div>
+  <div class="mobile-menu on-ink" id="mobile-menu" inert>
+    <nav aria-label="Mobile">
+      <a href="index.html"><span>01</span>Home</a>
+      <a href="courses.html"><span>02</span>Courses</a>
+      <a href="index.html#lab"><span>03</span>The lab</a>
+      <a href="index.html#services"><span>04</span>Services</a>
+      <a href="contact.html"><span>05</span>Contact</a>
+    </nav>
+    <div class="menu-foot">
+      <a class="btn btn--gold btn--block" href="https://wa.me/2348029596214?text=Hello%20Embtec%20Konzultz%2C%20I%20would%20like%20to%20enrol%20for%20a%20course." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp us</a>
+      <a class="btn btn--ghost btn--block" href="tel:+2348029596214"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call&nbsp;0802&nbsp;959&nbsp;6214</a>
     </div>
   </div>
 
-  <!-- ============ SERVICES / PROGRAMS ============ -->
-  <section class="section-pad" id="programs">
-    <div class="container">
-      <div class="section-head center reveal">
-        <span class="eyebrow">What we teach</span>
-        <h2>Six tracks. One outcome: hire-ready.</h2>
-        <p>Every track pairs hands-on projects with a working professional's curriculum — no filler modules, no outdated syllabus.</p>
-      </div>
+  <main id="main">
 
-      <div class="grid grid-3 reveal-stagger">
-        <a href="courses.html#web-development" class="card" style="padding:28px; display:block;">
-          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/></svg></div>
-          <h3>Web Development</h3>
-          <p class="desc">HTML, CSS, JavaScript, TypeScript, React, Next.js, Node &amp; Laravel — build and deploy full-stack products, not toy demos.</p>
-          <span class="pill pill-blue" style="margin-top:16px;">14 modules</span>
-        </a>
-        <a href="courses.html#ui-ux" class="card" style="padding:28px; display:block;">
-          <div class="icon-tile violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 1 0 10 10M12 2v10l7 7"/></svg></div>
-          <h3>UI/UX Design</h3>
-          <p class="desc">Research, personas, wireframes and Figma prototyping, tested with real users before a single pixel ships.</p>
-          <span class="pill pill-blue" style="margin-top:16px;">10 modules</span>
-        </a>
-        <a href="courses.html#graphics-design" class="card" style="padding:28px; display:block;">
-          <div class="icon-tile cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="13.5" cy="6.5" r="2.5"/><path d="M17.5 10.5 3 18l7.5-14.5c1 3 3.5 4.7 7 6"/></svg></div>
-          <h3>Graphics Design</h3>
-          <p class="desc">Photoshop, Illustrator, CorelDRAW and Canva — brand identity, packaging and social content clients actually pay for.</p>
-          <span class="pill pill-blue" style="margin-top:16px;">8 modules</span>
-        </a>
-        <a href="courses.html#digital-marketing" class="card" style="padding:28px; display:block;">
-          <div class="icon-tile amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l18-7-7 18-2-8-9-3z"/></svg></div>
-          <h3>Digital Marketing</h3>
-          <p class="desc">SEO, Google &amp; Meta Ads, email funnels and analytics — grow a real audience and prove it with numbers.</p>
-          <span class="pill pill-blue" style="margin-top:16px;">9 modules</span>
-        </a>
-        <a href="courses.html#microsoft-office" class="card" style="padding:28px; display:block;">
-          <div class="icon-tile office-trio">
-            <span class="office-mini word">W</span>
-            <span class="office-mini excel">X</span>
-            <span class="office-mini ppt">P</span>
+    <!-- Hero -->
+    <section class="hero on-ink" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Computer school · Eputu, Ibeju-Lekki</p>
+          <h1 class="display" id="hero-title">From first click to <span class="accent">first website.</span></h1>
+          <p class="lead">Embtec Konzultz is a hands-on computer school on Ogunfayo Road, Eputu. Learn web design, graphics design, Microsoft Office and databases in a powered, air-conditioned lab — with tutors who stay with you until it clicks.</p>
+          <div class="hero-actions">
+            <a class="btn btn--gold" href="https://wa.me/2348029596214?text=Hello%20Embtec%20Konzultz%2C%20I%20would%20like%20to%20enrol%20for%20a%20course." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Enrol on WhatsApp</a>
+            <a class="btn btn--ghost" href="courses.html">Explore courses<svg class="icon arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
-          <h3>Microsoft Office</h3>
-          <p class="desc">Word, Excel, PowerPoint, Publisher and Access — the productivity fluency every employer expects on day one.</p>
-          <span class="pill pill-blue" style="margin-top:16px;">6 modules</span>
-        </a>
-        <a href="office-space.html" class="card" style="padding:28px; display:block;">
-          <div class="icon-tile violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6"/></svg></div>
-          <h3>Office Space</h3>
-          <p class="desc">Coworking desks, training rooms and meeting rooms with fibre internet and 24/7 power — build after class.</p>
-          <span class="pill pill-cyan" style="margin-top:16px;">See facility</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ WHY CHOOSE US ============ -->
-  <section class="section-pad" style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-    <div class="container">
-      <div class="grid grid-2" style="align-items:center; gap:64px;">
-        <div class="reveal">
-          <span class="eyebrow">Why Embtec</span>
-          <h2 style="font-size:clamp(22px,3.2vw,32px); margin-top:16px;">Built for people who need results, not certificates for the wall.</h2>
-          <ul class="check-list" style="margin-top:26px;">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Instructors who currently work in the industry they teach.</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Small class sizes with 1-on-1 project reviews every week.</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> A portfolio and certificate you can show employers on day one.</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Coworking access included, so learning doesn't stop at 5pm.</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Flexible weekday, weekend and corporate cohort schedules.</li>
+          <ul class="hero-proof">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span><strong>4.2</strong> Google rating</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-zap"/></svg>Stable power supply</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-wind"/></svg>Air-conditioned lab</li>
           </ul>
         </div>
-        <div class="grid" style="grid-template-columns:1fr 1fr; gap:20px;">
-          <div class="card reveal" style="padding:24px;">
-            <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20V10M18 20V4M6 20v-6"/></svg></div>
-            <h4 style="font-size:16px;">Project-based</h4>
-            <p style="font-size:13.5px; color:var(--navy-70); margin-top:6px;">Every week ships a real deliverable, not just slides.</p>
+
+        <div class="stage" aria-hidden="true">
+          <div class="window window--editor">
+            <div class="window-bar">
+              <div class="dots"><i></i><i></i><i></i></div>
+              <div class="tabs"><span class="tab is-active">index.html</span><span class="tab">style.css</span></div>
+            </div>
+            <div class="code" data-typing>
+              <span class="ln"><span class="t-com">&lt;!-- my first website --&gt;</span></span>
+              <span class="ln"><span class="t-tag">&lt;section</span> <span class="t-attr">class</span>=<span class="t-str">"hero"</span><span class="t-tag">&gt;</span></span>
+              <span class="ln" data-show="h1">  <span class="t-tag">&lt;h1&gt;</span><span class="t-txt">Hello, world.</span><span class="t-tag">&lt;/h1&gt;</span></span>
+              <span class="ln" data-show="p">  <span class="t-tag">&lt;p&gt;</span><span class="t-txt">I built this at Embtec.</span><span class="t-tag">&lt;/p&gt;</span></span>
+              <span class="ln">  <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-str">"/projects"</span><span class="t-tag">&gt;</span></span>
+              <span class="ln">    <span class="t-txt">See my projects</span></span>
+              <span class="ln" data-show="btn">  <span class="t-tag">&lt;/a&gt;</span></span>
+              <span class="ln"><span class="t-tag">&lt;/section&gt;</span></span>
+            </div>
           </div>
-          <div class="card reveal" style="padding:24px;">
-            <div class="icon-tile violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-            <h4 style="font-size:16px;">Mentor access</h4>
-            <p style="font-size:13.5px; color:var(--navy-70); margin-top:6px;">Direct feedback from working professionals, weekly.</p>
-          </div>
-          <div class="card reveal" style="padding:24px;">
-            <div class="icon-tile cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 15a4 4 0 0 0 4-4V6a4 4 0 0 0-8 0v5a4 4 0 0 0 4 4ZM19 11a7 7 0 0 1-14 0M12 19v3"/></svg></div>
-            <h4 style="font-size:16px;">Interview prep</h4>
-            <p style="font-size:13.5px; color:var(--navy-70); margin-top:6px;">Mock interviews and CV reviews before graduation.</p>
-          </div>
-          <div class="card reveal" style="padding:24px;">
-            <div class="icon-tile amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-            <h4 style="font-size:16px;">Flexible payment</h4>
-            <p style="font-size:13.5px; color:var(--navy-70); margin-top:6px;">Installment plans available for every track.</p>
+          <div class="window window--browser">
+            <div class="window-bar">
+              <div class="dots"><i></i><i></i><i></i></div>
+              <div class="url"><svg class="icon"><use href="#i-lock"/></svg>yourname.github.io</div>
+            </div>
+            <div class="preview">
+              <div class="pv-h" data-pv="h1">Hello, world.</div>
+              <p data-pv="p">I built this at Embtec.</p>
+              <span class="pv-btn" data-pv="btn">See my projects →</span>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Tools ticker -->
+    <div class="ticker">
+      <div class="ticker-track">
+        <ul aria-label="Tools covered in our courses">
+          <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Responsive design</li><li>CorelDRAW</li><li>Adobe Photoshop</li><li>Microsoft Word</li><li>Microsoft Excel</li><li>PowerPoint</li><li>Microsoft Access</li><li>SQL</li><li>Git &amp; GitHub</li>
+        </ul>
+        <ul aria-hidden="true">
+          <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Responsive design</li><li>CorelDRAW</li><li>Adobe Photoshop</li><li>Microsoft Word</li><li>Microsoft Excel</li><li>PowerPoint</li><li>Microsoft Access</li><li>SQL</li><li>Git &amp; GitHub</li>
+        </ul>
       </div>
     </div>
-  </section>
 
-  <!-- ============ STATS BAND ============ -->
-  <section class="stat-band">
-    <div class="container grid grid-4 reveal-stagger">
-      <div class="stat-item"><div class="num" data-count="3200" data-suffix="+">0</div><div class="lbl">Students &amp; graduates</div></div>
-      <div class="stat-item"><div class="num" data-count="180" data-suffix="+">0</div><div class="lbl">Corporate placements</div></div>
-      <div class="stat-item"><div class="num" data-count="12" data-suffix=" wks">0</div><div class="lbl">Average track length</div></div>
-      <div class="stat-item"><div class="num" data-count="4.8" data-suffix="/5">0</div><div class="lbl">Average student rating</div></div>
-    </div>
-  </section>
-
-  <!-- ============ LEARNING PROCESS ============ -->
-  <section class="section-pad" style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">How it works</span>
-        <h2>From application to your first paid project.</h2>
-      </div>
-      <div class="grid grid-2" style="align-items:start; gap:48px;">
-        <div class="roadmap reveal-stagger">
-          <div class="roadmap-line" aria-hidden="true"></div>
-          <div class="road-step"><div class="road-num">01</div><div class="road-body"><h4>Apply &amp; pick a track</h4><p>Tell us your goal — we recommend the right track and schedule, weekday or weekend.</p></div></div>
-          <div class="road-step"><div class="road-num">02</div><div class="road-body"><h4>Free skills consultation</h4><p>A short call with an instructor to confirm the track fits your experience level.</p></div></div>
-          <div class="road-step"><div class="road-num">03</div><div class="road-body"><h4>Learn by building</h4><p>Weekly live classes plus guided projects reviewed one-on-one by your mentor.</p></div></div>
-          <div class="road-step"><div class="road-num">04</div><div class="road-body"><h4>Ship a portfolio</h4><p>Graduate with 3–5 real projects, a certificate, and a reviewed CV/portfolio.</p></div></div>
-          <div class="road-step"><div class="road-num">05</div><div class="road-body"><h4>Get placement support</h4><p>Interview prep and introductions through our employer &amp; alumni network.</p></div></div>
-        </div>
-        <div class="reveal roadmap-visual">
-          <div class="card" style="border:none; overflow:hidden; padding:0; border-radius:var(--radius-xl); box-shadow:var(--shadow-lg);">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Mentor reviewing a student's project on a laptop" style="width:100%; height:100%; object-fit:cover; display:block;">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ OFFICE SPACE PREVIEW ============ -->
-  <section class="section-pad">
-    <div class="container">
-      <div class="grid grid-2" style="align-items:center; gap:56px;">
-        <div class="reveal" style="order:2;">
-          <div class="grid" style="grid-template-columns:1fr 1fr; gap:14px;">
-            <div class="card" style="height:150px; border:none; overflow:hidden; padding:0;"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=500&q=80" alt="Coworking desks" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="card" style="height:110px; margin-top:24px; border:none; overflow:hidden; padding:0;"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=500&q=80" alt="Meeting pod" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="card" style="height:110px; border:none; overflow:hidden; padding:0;"><img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=500&q=80" alt="Reception lounge" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="card" style="height:150px; margin-top:-24px; border:none; overflow:hidden; padding:0;"><img src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=500&q=80" alt="Conference room" style="width:100%; height:100%; object-fit:cover;"></div>
-          </div>
-        </div>
-        <div class="reveal" style="order:1;">
-          <span class="eyebrow">Office space</span>
-          <h2 style="font-size:clamp(22px,3.2vw,32px); margin-top:16px;">A coworking home for builders, freelancers &amp; small teams.</h2>
-          <p style="margin-top:16px; color:var(--navy-70); font-size:16px;">Fibre internet, 24/7 power, training and meeting rooms, and a business address — inside the same building where you learned to code.</p>
-          <a href="office-space.html" class="btn btn-primary ripple" style="margin-top:26px;">
-            Tour the office space
-            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ TESTIMONIALS PREVIEW ============ -->
-  <section class="section-pad" style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-    <div class="container">
-      <div class="section-head center reveal">
-        <span class="eyebrow">Success stories</span>
-        <h2>Graduates who now get paid for these skills.</h2>
-      </div>
-      <div class="grid grid-3 reveal-stagger">
-        <div class="card t-card">
-          <div class="t-stars">★★★★★</div>
-          <p class="t-quote">Six months after the web development track I was freelancing full-time and just signed my first retainer client.</p>
-          <div class="t-person">
-            <div class="t-avatar" style="background:var(--grad-brand);">CO</div>
-            <div><div class="name">Chiamaka O.</div><div class="role">Web Development, 2025 cohort</div></div>
-          </div>
-        </div>
-        <div class="card t-card">
-          <div class="t-stars">★★★★★</div>
-          <p class="t-quote">The UI/UX track pushed me to actually test designs with real users — that's what got me hired.</p>
-          <div class="t-person">
-            <div class="t-avatar" style="background:var(--grad-cyan);">TA</div>
-            <div><div class="name">Tunde A.</div><div class="role">UI/UX Design, NYSC batch</div></div>
-          </div>
-        </div>
-        <div class="card t-card">
-          <div class="t-stars">★★★★★</div>
-          <p class="t-quote">We sent eight staff through the corporate Microsoft Office track — reporting time dropped noticeably that same month.</p>
-          <div class="t-person">
-            <div class="t-avatar" style="background:linear-gradient(120deg,#7C3AED,#14D8D0);">FB</div>
-            <div><div class="name">Funmi B.</div><div class="role">Operations Lead, corporate client</div></div>
-          </div>
-        </div>
-      </div>
-      <div style="text-align:center; margin-top:36px;">
-        <a href="testimonials.html" class="btn btn-ghost ripple">Read all stories</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FAQ ============ -->
-  <section class="section-pad" id="faq">
-    <div class="container">
-      <div class="grid grid-2" style="gap:56px;">
-        <div class="reveal">
-          <span class="eyebrow">FAQ</span>
-          <h2 style="font-size:clamp(22px,3.2vw,32px); margin-top:16px;">Questions we get asked at every intake.</h2>
-          <p style="margin-top:16px; color:var(--navy-70);">Can't find your answer here? Reach us directly and we'll respond same day.</p>
-          <a href="#contact" class="btn btn-ghost ripple" style="margin-top:22px;">Ask us directly</a>
-        </div>
-        <div class="accordion reveal">
-          <div class="acc-item open">
-            <div class="acc-head">Do I need prior experience to start?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
-            <div class="acc-panel" style="max-height:200px;"><div class="acc-panel-inner">No. Every track starts from fundamentals. If you already have experience, we assess and place you into an intermediate cohort instead.</div></div>
-          </div>
-          <div class="acc-item">
-            <div class="acc-head">Are classes in-person or online?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
-            <div class="acc-panel"><div class="acc-panel-inner">Both. Choose in-person at our Lagos training rooms, live online, or a hybrid schedule — same curriculum either way.</div></div>
-          </div>
-          <div class="acc-item">
-            <div class="acc-head">Do you offer installment payment plans?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
-            <div class="acc-panel"><div class="acc-panel-inner">Yes, every track can be split into 2–3 payments. Corporate cohorts are invoiced on agreed milestones.</div></div>
-          </div>
-          <div class="acc-item">
-            <div class="acc-head">Will I get a certificate?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
-            <div class="acc-panel"><div class="acc-panel-inner">Yes — issued on completion of your final project, alongside a portfolio review and reference letter on request.</div></div>
-          </div>
-          <div class="acc-item">
-            <div class="acc-head">Can I use the office space without enrolling in a course?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
-            <div class="acc-panel"><div class="acc-panel-inner">Yes, coworking desks and meeting rooms are open to the public on daily, weekly or monthly plans. See the Office Space page for pricing.</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FINAL CTA / NEWSLETTER ============ -->
-  <section class="section-pad" id="apply">
-    <div class="container">
-      <div class="cta-band reveal">
-        <div class="grid grid-2" style="position:relative; align-items:center; gap:40px;">
+    <!-- Programmes -->
+    <section class="section" id="programmes" aria-labelledby="programmes-title">
+      <div class="container">
+        <div class="section-head section-head--split">
           <div>
-            <h2 style="font-size:clamp(26px,3.4vw,36px);">Ready to start your track?</h2>
-            <p style="margin-top:12px; max-width:440px;">Applications for the next cohort close soon. Get a free skills consultation before you commit to a track.</p>
+            <p class="eyebrow">Programmes</p>
+            <h2 class="h2" id="programmes-title">Four programmes, taught hands-on.</h2>
           </div>
-          <form class="grid" style="grid-template-columns:1fr auto; gap:12px;" data-demo-form>
-            <input type="email" required placeholder="Your email address" style="padding:15px 18px; border-radius:100px; border:none; font-family:inherit; font-size:14.5px;">
-            <button type="submit" class="btn btn-primary ripple" style="background:#fff; color:var(--blue); box-shadow:none;">Get started</button>
-          </form>
+          <p class="lead">Start from zero or sharpen what you already know. Every programme pairs clear explanations with practical work at your own workstation.</p>
+        </div>
+
+        <div class="programs">
+          <article class="program program--web on-ink" data-reveal>
+            <div class="program-top"><span class="program-num">01 / Web</span><span class="program-tag">Flagship</span></div>
+            <h3>Web Design &amp; Development</h3>
+            <p>Plan, design, code and publish real websites — from your first HTML tag to a live, mobile-friendly portfolio online.</p>
+            <div class="viz viz-web" aria-hidden="true">
+              <div class="vw-bar"><i></i><i></i><i></i><span>portfolio.html</span></div>
+              <div class="vw-body">
+                <div class="vw-nav"><b></b><span></span><span></span><span></span></div>
+                <div class="vw-hero"><div class="vw-h"></div><div class="vw-p"></div><div class="vw-p short"></div><div class="vw-btn"></div></div>
+                <div class="vw-cards"><div class="vw-card"><i></i><b></b><b class="s"></b></div><div class="vw-card"><i></i><b></b><b class="s"></b></div><div class="vw-card"><i></i><b></b><b class="s"></b></div><div class="vw-card"><i></i><b></b><b class="s"></b></div><div class="vw-card"><i></i><b></b><b class="s"></b></div><div class="vw-card"><i></i><b></b><b class="s"></b></div></div>
+              </div>
+            </div>
+            <ul class="chips"><li class="chip">HTML5</li><li class="chip">CSS3</li><li class="chip">JavaScript</li><li class="chip">Responsive design</li><li class="chip">Hosting</li></ul>
+            <a class="program-link" href="courses.html#web-design">View curriculum<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+
+          <article class="program program--graphics" data-reveal style="--d:.08s">
+            <div class="program-top"><span class="program-num">02 / Design</span></div>
+            <h3>Graphics Design</h3>
+            <p>Logos, flyers, banners and brand kits — the design principles behind them and the software to produce them.</p>
+            <div class="viz viz-gfx" aria-hidden="true">
+              <svg viewBox="0 0 240 110">
+                <path d="M20 88 L78 14" stroke="#3a2fd0" stroke-width="1.2" stroke-dasharray="3 4" fill="none"/>
+                <path d="M220 62 L158 12" stroke="#3a2fd0" stroke-width="1.2" stroke-dasharray="3 4" fill="none"/>
+                <path d="M20 88 C 78 14, 158 12, 220 62" stroke="#0c0d12" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <circle cx="78" cy="14" r="5" fill="#3a2fd0"/>
+                <circle cx="158" cy="12" r="5" fill="#3a2fd0"/>
+                <rect x="14" y="82" width="12" height="12" fill="#fff" stroke="#0c0d12" stroke-width="2"/>
+                <rect x="214" y="56" width="12" height="12" fill="#e9cc24" stroke="#0c0d12" stroke-width="2"/>
+              </svg>
+              <div class="swatches"><span style="--c:#e9cc24"></span><span style="--c:#2418a6"></span><span style="--c:#0c0d12"></span><span style="--c:#ffffff"></span></div>
+            </div>
+            <ul class="chips"><li class="chip">CorelDRAW</li><li class="chip">Photoshop</li><li class="chip">Branding</li><li class="chip">Print</li></ul>
+            <a class="program-link" href="courses.html#graphics-design">View curriculum<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+
+          <article class="program program--office" data-reveal style="--d:.16s">
+            <div class="program-top"><span class="program-num">03 / Office</span></div>
+            <h3>Microsoft Office Applications</h3>
+            <p>The digital skills every employer expects: documents, spreadsheets, presentations and databases — done properly.</p>
+            <div class="viz viz-sheet" aria-hidden="true">
+              <div class="fx"><b>fx</b><span>=SUM(B2:B4)</span></div>
+              <div class="sheet">
+                <span class="h"></span><span class="h">A</span><span class="h">B</span><span class="h">C</span>
+                <span class="h">2</span><span>Jan</span><span>120</span><span><i class="bar" style="--w:48%"></i></span>
+                <span class="h">3</span><span>Feb</span><span>180</span><span><i class="bar" style="--w:72%"></i></span>
+                <span class="h">4</span><span>Mar</span><span>150</span><span><i class="bar" style="--w:60%"></i></span>
+                <span class="h">5</span><span>Total</span><span class="total">450</span><span></span>
+              </div>
+            </div>
+            <ul class="chips"><li class="chip">Word</li><li class="chip">Excel</li><li class="chip">PowerPoint</li><li class="chip">Access</li></ul>
+            <a class="program-link" href="courses.html#microsoft-office">View curriculum<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+
+          <article class="program program--data" data-reveal>
+            <div class="program-body">
+              <div class="program-top"><span class="program-num">04 / Data</span></div>
+              <h3>Database Management</h3>
+              <p>Design databases that keep records organised, searchable and reliable — using Microsoft Access and SQL.</p>
+              <ul class="chips"><li class="chip">MS Access</li><li class="chip">SQL</li><li class="chip">Data design</li><li class="chip">Reports</li></ul>
+              <a class="program-link" href="courses.html#database">View curriculum<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+            <div class="viz viz-db" aria-hidden="true">
+              <div class="sql"><span class="k">SELECT</span> name, course <span class="k">FROM</span> students<br><span class="k">WHERE</span> course = <span class="s">'Web Design'</span>;</div>
+              <div class="db-table">
+                <span class="th">id</span><span class="th">name</span><span class="th">course</span>
+                <span>01</span><span>Adaeze</span><span>Web Design</span>
+                <span>02</span><span>Tunde</span><span>Web Design</span>
+                <span>03</span><span>Kemi</span><span>Web Design</span>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-</main>
+    <!-- The lab -->
+    <section class="section section--white" id="lab" aria-labelledby="lab-title">
+      <div class="container lab-grid">
+        <div class="lab-copy">
+          <p class="eyebrow">The lab</p>
+          <h2 class="h2" id="lab-title">A space built for focused learning.</h2>
+          <p class="lead">These are real photos from our campus on Ogunfayo Road, Eputu. Come and see it for yourself.</p>
+          <ul class="features">
+            <li class="feature">
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-zap"/></svg></span>
+              <div><h3>Stable power supply</h3><p>Lessons keep running when the grid doesn’t, so your practice time is never cut short.</p></div>
+            </li>
+            <li class="feature">
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-wind"/></svg></span>
+              <div><h3>Air-conditioned &amp; well ventilated</h3><p>A comfortable, conducive room for long practical sessions.</p></div>
+            </li>
+            <li class="feature">
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg></span>
+              <div><h3>Dedicated workstations</h3><p>Practise on our desktop computers in class — you don’t need to own a laptop to start.</p></div>
+            </li>
+            <li class="feature">
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></span>
+              <div><h3>Tutors on hand</h3><p>Stuck? Ask. Our tutors are readily available to answer your questions.</p></div>
+            </li>
+          </ul>
+        </div>
 
-<!-- ============ FOOTER ============ -->
-<footer class="site-footer" id="contact">
-  <div class="container">
-    <div class="foot-grid">
-      <div class="foot-col">
-        <a href="index.html" class="brand"><span class="brand-mark">E</span><span class="brand-name">Embtec <b>Konzultz</b></span></a>
-        <p style="margin-top:16px; font-size:14px; color:var(--navy-70); max-width:280px;">Practical technology training and coworking space for students, professionals and organizations in Lagos.</p>
-        <div class="social-row" style="margin-top:20px;">
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5M12 11c1.5-2 4-2 4 1v4"/></svg></a>
-          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l16 16M20 4 4 20"/></svg></a>
+        <div class="lab-photos">
+          <figure class="photo photo--wide" data-reveal>
+            <img src="assets/img/lab-classroom.webp" alt="Embtec Konzultz training room with rows of desks and desktop computers" width="680" height="281" loading="lazy" decoding="async">
+            <figcaption>Training room</figcaption>
+          </figure>
+          <figure class="photo" data-reveal style="--d:.08s">
+            <img src="assets/img/lab-workstations.webp" alt="Computer workstations with desktop PCs, a laptop and green chairs beside a window" width="680" height="510" loading="lazy" decoding="async">
+            <figcaption>Workstations</figcaption>
+          </figure>
+          <figure class="photo" data-reveal style="--d:.16s">
+            <img src="assets/img/lab-cyber.webp" alt="A row of wooden practice booths with blue and green chairs" width="680" height="510" loading="lazy" decoding="async">
+            <figcaption>Practice booths</figcaption>
+          </figure>
+          <div class="lab-note on-ink" data-reveal>
+            <p><strong>Visit us:</strong> Ogunfayo Rd, Eputu Town, Ibeju-Lekki, Lagos</p>
+            <a class="btn btn--gold btn--sm" href="https://www.google.com/maps/dir/?api=1&amp;destination=Embtec%20Konzultz%2C%20Ogunfayo%20Rd%2C%20Eputu%20Town%2C%20Lagos" target="_blank" rel="noopener">Get directions<svg class="icon arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
         </div>
       </div>
-      <div class="foot-col">
-        <h5>Courses</h5>
-        <ul>
-          <li><a href="courses.html#web-development">Web Development</a></li>
-          <li><a href="courses.html#ui-ux">UI/UX Design</a></li>
-          <li><a href="courses.html#graphics-design">Graphics Design</a></li>
-          <li><a href="courses.html#digital-marketing">Digital Marketing</a></li>
-          <li><a href="courses.html#microsoft-office">Microsoft Office</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="office-space.html">Office Space</a></li>
-          <li><a href="testimonials.html">Testimonials</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#apply">Apply now</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h5>Office hours</h5>
-        <ul>
-          <li style="color:var(--navy-70); font-size:14.5px;">Mon – Fri: 8am – 7pm</li>
-          <li style="color:var(--navy-70); font-size:14.5px;">Saturday: 9am – 4pm</li>
-          <li style="color:var(--navy-70); font-size:14.5px;">Lagos, Nigeria</li>
-          <li style="margin-top:8px;"><a href="mailto:hello@embteckonzultz.com">hello@embteckonzultz.com</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>© <span data-year></span> Embtec Konzultz. All rights reserved.</span>
-      <span style="display:flex; gap:18px;"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></span>
-    </div>
-  </div>
-</footer>
+    </section>
 
-<div class="float-actions">
-  <a class="fab fab-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
-  <a class="fab fab-wa" href="https://wa.me/2340000000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.6 14.3c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.7-2.8-1-4.6-3.8-4.7-4-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.7 1.9.8 2 .1.2.1.4 0 .6-.1.2-.2.3-.4.5-.2.2-.4.4-.2.7.2.4 1 1.5 2 2.4 1.3 1.1 2.3 1.5 2.7 1.6.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2 0 1.5.7 1.8.8.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+    <!-- Method -->
+    <section class="section" aria-labelledby="method-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">How we teach</p>
+          <h2 class="h2" id="method-title">Learn it. Build it. <span class="accent-royal">Own it.</span></h2>
+        </div>
+        <ol class="method">
+          <li class="method-card" data-reveal>
+            <span class="method-num" aria-hidden="true">01</span>
+            <h3>Learn the fundamentals</h3>
+            <p>Every topic starts with the why, explained in plain language. No jargon walls, no rushing past the basics.</p>
+          </li>
+          <li class="method-card" data-reveal style="--d:.08s">
+            <span class="method-num" aria-hidden="true">02</span>
+            <h3>Practise on real tasks</h3>
+            <p>Apply each lesson straight away: a real letter, a real flyer, a real web page — made by you, at your workstation.</p>
+          </li>
+          <li class="method-card" data-reveal style="--d:.16s">
+            <span class="method-num" aria-hidden="true">03</span>
+            <h3>Leave with proof</h3>
+            <p>Finish with work you made yourself — something you can show a client, an employer or your school.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section section--ink on-ink" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">Beyond the classroom</p>
+            <h2 class="h2" id="services-title">Walk in for everything digital.</h2>
+          </div>
+          <p class="lead">Embtec Konzultz is also a neighbourhood business centre. Our walk-in services are open to everyone — no enrolment needed.</p>
+        </div>
+        <div class="services">
+          <article class="service" data-reveal>
+            <span class="service-icon"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></span>
+            <h3>Cybercafé &amp; internet</h3>
+            <p>Browse, research, complete online forms and registrations, and handle your email on reliable computers.</p>
+            <ul class="chips"><li class="chip">Browsing</li><li class="chip">Online registration</li><li class="chip">Email</li></ul>
+          </article>
+          <article class="service" data-reveal style="--d:.08s">
+            <span class="service-icon"><svg class="icon" aria-hidden="true"><use href="#i-printer"/></svg></span>
+            <h3>Printing &amp; photocopy</h3>
+            <p>Print documents, assignments and CVs, and make clean photocopies while you wait.</p>
+            <ul class="chips"><li class="chip">Printing</li><li class="chip">Photocopy</li><li class="chip">Documents</li></ul>
+          </article>
+          <article class="service" data-reveal style="--d:.16s">
+            <span class="service-icon"><svg class="icon" aria-hidden="true"><use href="#i-trend"/></svg></span>
+            <h3>Financial advisory</h3>
+            <p>Guidance on financial planning for individuals and small businesses. Speak with us to arrange a consultation.</p>
+            <ul class="chips"><li class="chip">Individuals</li><li class="chip">Small businesses</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section" id="reviews" aria-labelledby="reviews-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Reviews</p>
+          <h2 class="h2" id="reviews-title">In our students’ words.</h2>
+        </div>
+        <div class="reviews">
+          <div class="rating-card" data-reveal>
+            <div class="rating-num">4.2<small>/5</small></div>
+            <div class="stars" style="--pct:86%" role="img" aria-label="Rated 4.2 out of 5">
+              <span class="stars-base"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+              <span class="stars-fill"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+            </div>
+            <p>Average rating from student reviews on Google.</p>
+            <a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=Embtec%20Konzultz%2C%20Ogunfayo%20Rd%2C%20Eputu%20Town%2C%20Lagos" target="_blank" rel="noopener">Read reviews on Google<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+          <figure class="quote-card" data-reveal style="--d:.08s">
+            <blockquote>
+              <svg class="quote-mark" aria-hidden="true"><use href="#i-quote"/></svg>
+              <p>“…a family… top notch knowledge being handed out.”</p>
+            </blockquote>
+            <figcaption><span class="g-badge" aria-hidden="true">G</span>Student review on Google</figcaption>
+          </figure>
+          <div class="mentions" data-reveal>
+            <span class="mentions-label">Reviewers mention</span>
+            <ul>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Stable power supply</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Conducive environment</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Good ventilation</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Tutors ready to answer questions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enrolment + FAQ -->
+    <section class="section section--white" id="enrol" aria-labelledby="enrol-title">
+      <div class="container enrol-grid">
+        <div>
+          <p class="eyebrow">Enrolment</p>
+          <h2 class="h2 mt-20" id="enrol-title">Getting started is simple.</h2>
+          <ol class="timeline">
+            <li data-reveal>
+              <span class="n">01</span>
+              <div><h3>Say hello</h3><p>Call or WhatsApp <a href="tel:+2348029596214">0802&nbsp;959&nbsp;6214</a> and tell us what you want to learn.</p></div>
+            </li>
+            <li data-reveal style="--d:.08s">
+              <span class="n">02</span>
+              <div><h3>Visit the lab</h3><p>Come to Ogunfayo Road, Eputu, near Eputu Mall. See the space, meet a tutor and choose your programme.</p></div>
+            </li>
+            <li data-reveal style="--d:.16s">
+              <span class="n">03</span>
+              <div><h3>Start learning</h3><p>Agree a class schedule that fits your day — then write your first line of code, or your first formula.</p></div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="faq" id="faq">
+          <h2 class="faq-title">Questions, answered.</h2>
+          <details>
+            <summary>Do I need any computer experience?<span class="plus" aria-hidden="true"></span></summary>
+            <div class="answer"><p>No. Our Microsoft Office Applications programme starts from the basics, and every programme is taught step by step. Tell us your level and we’ll recommend where to start.</p></div>
+          </details>
+          <details>
+            <summary>Do I need my own laptop?<span class="plus" aria-hidden="true"></span></summary>
+            <div class="answer"><p>No. You’ll train on the workstations in our lab. If you already have a laptop, ask us about using it in class.</p></div>
+          </details>
+          <details>
+            <summary>How much do the courses cost?<span class="plus" aria-hidden="true"></span></summary>
+            <div class="answer"><p>Fees depend on the programme and schedule you choose. Call or WhatsApp <a href="tel:+2348029596214">0802&nbsp;959&nbsp;6214</a> for current fees.</p></div>
+          </details>
+          <details>
+            <summary>How long does each course take?<span class="plus" aria-hidden="true"></span></summary>
+            <div class="answer"><p>It depends on the programme and how often you attend. We’ll give you a clear timeline when you enrol.</p></div>
+          </details>
+          <details>
+            <summary>Can I use the cybercafé without enrolling?<span class="plus" aria-hidden="true"></span></summary>
+            <div class="answer"><p>Yes. Internet access, printing and photocopying are open to everyone — just walk in.</p></div>
+          </details>
+          <details>
+            <summary>Where exactly are you?<span class="plus" aria-hidden="true"></span></summary>
+            <div class="answer"><p>Ogunfayo Road, Eputu Town, Ibeju-Lekki, Lagos 105101 — near Eputu Mall, just off the Lekki–Epe Expressway. <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Embtec%20Konzultz%2C%20Ogunfayo%20Rd%2C%20Eputu%20Town%2C%20Lagos" target="_blank" rel="noopener">Get directions on Google Maps</a>.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="cta on-ink" data-reveal>
+          <div class="cta-body">
+            <p class="eyebrow">Get in touch</p>
+            <h2 class="h2 mt-20" id="contact-title">Your first website is closer than you think.</h2>
+            <p class="lead">Call, send a WhatsApp message or walk in. We’ll help you choose the right programme.</p>
+            <div class="contact-list">
+              <a class="contact-item" href="tel:+2348029596214">
+                <span class="ci-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+                <span><small>Call</small><strong>0802&nbsp;959&nbsp;6214</strong></span>
+                <svg class="icon go" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+              <a class="contact-item" href="https://wa.me/2348029596214?text=Hello%20Embtec%20Konzultz%2C%20I%20would%20like%20to%20enrol%20for%20a%20course." target="_blank" rel="noopener">
+                <span class="ci-icon is-wa"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg></span>
+                <span><small>WhatsApp</small><strong>Chat with us</strong></span>
+                <svg class="icon go" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+              <a class="contact-item" href="https://www.google.com/maps/dir/?api=1&amp;destination=Embtec%20Konzultz%2C%20Ogunfayo%20Rd%2C%20Eputu%20Town%2C%20Lagos" target="_blank" rel="noopener">
+                <span class="ci-icon"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span>
+                <span><small>Visit</small><strong>Ogunfayo Rd, Eputu Town, Lagos 105101</strong></span>
+                <svg class="icon go" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="cta-map">
+            <iframe title="Map showing Embtec Konzultz on Ogunfayo Road, Eputu Town, Lagos" src="https://www.google.com/maps?q=Embtec%20Konzultz%2C%20Ogunfayo%20Rd%2C%20Eputu%20Town%2C%20Lagos&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer on-ink">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo-chip" href="index.html" aria-label="Embtec Konzultz — home"><img src="assets/img/logo.webp" alt="Embtec Konzultz" width="514" height="215" loading="lazy"></a>
+          <p>Practical ICT training, cybercafé and business services in Eputu, Ibeju-Lekki, Lagos.</p>
+          <div class="socials">
+            <a href="https://www.facebook.com/embteckonzultzICT/" target="_blank" rel="noopener" aria-label="Embtec Konzultz on Facebook"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+            <a href="https://www.instagram.com/embteckonzultz/" target="_blank" rel="noopener" aria-label="Embtec Konzultz on Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+            <a href="https://www.youtube.com/@embteckonzultzcomputerscho2784" target="_blank" rel="noopener" aria-label="Embtec Konzultz on YouTube"><svg class="icon" aria-hidden="true"><use href="#i-youtube"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h2>Programmes</h2>
+          <ul>
+            <li><a href="courses.html#web-design">Web Design &amp; Development</a></li>
+            <li><a href="courses.html#graphics-design">Graphics Design</a></li>
+            <li><a href="courses.html#microsoft-office">Microsoft Office</a></li>
+            <li><a href="courses.html#database">Database Management</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Explore</h2>
+          <ul>
+            <li><a href="index.html#lab">The lab</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#reviews">Reviews</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li><a href="tel:+2348029596214">0802&nbsp;959&nbsp;6214</a></li>
+            <li><a href="https://wa.me/2348029596214" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><address>Ogunfayo Rd, Eputu Town,<br>Ibeju-Lekki, Lagos 105101</address></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-word" aria-hidden="true">EMBTEC</div>
+      <div class="footer-bottom">
+        <p>© <span data-year>2026</span> Embtec Konzultz. All rights reserved.</p>
+        <p>Hand-coded in <code>HTML</code>, <code>CSS</code> &amp; <code>JavaScript</code>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/2348029596214?text=Hello%20Embtec%20Konzultz%2C%20I%20would%20like%20to%20enrol%20for%20a%20course." target="_blank" rel="noopener" aria-label="Chat with Embtec Konzultz on WhatsApp">
+    <span class="wa-dot"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg></span><span class="wa-label">Chat with us</span>
   </a>
-</div>
-
-<script>
-// ============================================================
-// EMBTEC KONZULTZ — shared site behavior
-// ============================================================
-document.addEventListener('DOMContentLoaded', () => {
-
-  /* Year in footer */
-  document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
-
-
-  /* Sticky header state */
-  const header = document.querySelector('.site-header');
-  const onScroll = () => {
-    if (!header) return;
-    header.classList.toggle('scrolled', window.scrollY > 12);
-    const top = document.querySelector('.fab-top');
-    if (top) top.classList.toggle('show', window.scrollY > 480);
-  };
-  document.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  /* Mobile nav toggle */
-  const navToggle = document.querySelector('.nav-toggle');
-  const mainNav = document.querySelector('.main-nav');
-  if (navToggle && mainNav) {
-    navToggle.addEventListener('click', () => {
-      const open = mainNav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mainNav.classList.remove('open')));
-  }
-
-  /* Back to top */
-  document.querySelector('.fab-top')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-  /* Scroll reveal */
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: .14, rootMargin: '0px 0px -60px 0px' });
-  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
-
-  /* Animated counters */
-  const counters = document.querySelectorAll('[data-count]');
-  const cio = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target;
-      const target = parseFloat(el.dataset.count);
-      const suffix = el.dataset.suffix || '';
-      const decimals = el.dataset.count.includes('.') ? 1 : 0;
-      const dur = 1400;
-      const start = performance.now();
-      const step = (now) => {
-        const p = Math.min(1, (now - start) / dur);
-        const eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = (target * eased).toFixed(decimals) + suffix;
-        if (p < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-      cio.unobserve(el);
-    });
-  }, { threshold: .5 });
-  counters.forEach(el => cio.observe(el));
-
-  /* Ripple buttons */
-  document.querySelectorAll('.ripple').forEach(btn => {
-    btn.addEventListener('click', function (e) {
-      const rect = this.getBoundingClientRect();
-      const dot = document.createElement('span');
-      const size = Math.max(rect.width, rect.height);
-      dot.className = 'ripple-dot';
-      dot.style.width = dot.style.height = size + 'px';
-      dot.style.left = (e.clientX - rect.left - size / 2) + 'px';
-      dot.style.top = (e.clientY - rect.top - size / 2) + 'px';
-      this.appendChild(dot);
-      setTimeout(() => dot.remove(), 650);
-    });
-  });
-
-  /* Mouse parallax on hero terminal */
-  const parallaxEl = document.querySelector('[data-parallax]');
-  if (parallaxEl) {
-    document.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - .5) * 10;
-      const y = (e.clientY / window.innerHeight - .5) * 10;
-      parallaxEl.style.transform = `rotateY(${x * .4}deg) rotateX(${-y * .4}deg)`;
-    });
-  }
-
-  /* Terminal typing sequence (hero signature element) */
-  const termBody = document.querySelector('[data-terminal]');
-  if (termBody) {
-    const lines = [
-      { html: '<span class="k">embtec</span> compile <span class="v">--path</span>' },
-      { html: '<span class="muted">resolving skill graph for you...</span>' },
-      { html: '<span class="ok">✓</span> learn   → HTML, CSS, JavaScript' },
-      { html: '<span class="ok">✓</span> build   → React &amp; Node projects' },
-      { html: '<span class="ok">✓</span> design  → Figma &amp; UI systems' },
-      { html: '<span class="ok">✓</span> mentor  → weekly 1-on-1 code review' },
-      { html: '<span class="ok">✓</span> ship    → portfolio + certificate' },
-      { html: '<span class="muted">installing coworking-access@latest...</span>' },
-      { html: '<span class="ok">✓</span> desk    → 24/7 studio access unlocked' },
-      { html: '<span class="ok">✓</span> launch  → job-ready in 12 weeks' },
-      { html: '<span class="muted">career.status</span> = <span class="ok">"compiled successfully"</span>' },
-    ];
-    let li = 0;
-    const typeLine = () => {
-      if (li >= lines.length) {
-        const c = document.createElement('div');
-        c.innerHTML = '<span class="k">$</span> <span class="terminal-cursor"></span>';
-        termBody.appendChild(c);
-        return;
-      }
-      const row = document.createElement('div');
-      row.className = 'term-row';
-      termBody.appendChild(row);
-      const text = lines[li].html;
-      // reveal char-by-char but keep tags intact by chunking on tag boundaries
-      const tokens = text.split(/(<[^>]+>)/g);
-      let ti = 0, out = '';
-      const step = () => {
-        if (ti >= tokens.length) { li++; setTimeout(typeLine, 340); return; }
-        const tok = tokens[ti];
-        if (tok.startsWith('<')) { out += tok; ti++; step(); return; }
-        let ci = 0;
-        const typeChar = () => {
-          if (ci < tok.length) { out += tok[ci]; row.innerHTML = out; ci++; setTimeout(typeChar, 14); }
-          else { ti++; step(); }
-        };
-        typeChar();
-      };
-      step();
-    };
-    const tio = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { typeLine(); tio.disconnect(); } });
-    }, { threshold: .4 });
-    tio.observe(termBody);
-  }
-
-  /* Course / gallery filters */
-  document.querySelectorAll('[data-filter-group]').forEach(group => {
-    const chips = group.querySelectorAll('.filter-chip');
-    const targetSel = group.dataset.filterGroup;
-    const items = document.querySelectorAll(targetSel);
-    chips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        chips.forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        const cat = chip.dataset.cat;
-        items.forEach(it => {
-          const show = cat === 'all' || it.dataset.cat === cat;
-          it.style.display = show ? '' : 'none';
-        });
-      });
-    });
-  });
-
-  /* Accordion (FAQ) */
-  document.querySelectorAll('.acc-item').forEach(item => {
-    const head = item.querySelector('.acc-head');
-    const panel = item.querySelector('.acc-panel');
-    head.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      item.closest('.accordion')?.querySelectorAll('.acc-item').forEach(i => {
-        i.classList.remove('open');
-        i.querySelector('.acc-panel').style.maxHeight = null;
-      });
-      if (!isOpen) {
-        item.classList.add('open');
-        panel.style.maxHeight = panel.scrollHeight + 'px';
-      }
-    });
-  });
-
-  /* Testimonials carousel (simple auto-scroll track) */
-  const track = document.querySelector('[data-t-track]');
-  if (track) {
-    let idx = 0;
-    const cards = track.children.length;
-    const prev = document.querySelector('[data-t-prev]');
-    const next = document.querySelector('[data-t-next]');
-    const go = (dir) => {
-      const cardW = track.children[0].getBoundingClientRect().width + 24;
-      idx = Math.max(0, Math.min(cards - 1, idx + dir));
-      track.scrollTo({ left: idx * cardW, behavior: 'smooth' });
-    };
-    next?.addEventListener('click', () => go(1));
-    prev?.addEventListener('click', () => go(-1));
-  }
-
-  /* Booking / contact form — front-end only demo submit */
-  document.querySelectorAll('[data-demo-form]').forEach(form => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const btn = form.querySelector('button[type="submit"]');
-      const original = btn.innerHTML;
-      btn.innerHTML = 'Sending…';
-      btn.disabled = true;
-      setTimeout(() => {
-        btn.innerHTML = 'Request sent ✓';
-        setTimeout(() => { btn.innerHTML = original; btn.disabled = false; form.reset(); }, 2200);
-      }, 900);
-    });
-  });
-
-});
-
-</script>
 </body>
 </html>

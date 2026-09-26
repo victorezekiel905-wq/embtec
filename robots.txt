@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://victorezekiel905-wq.github.io/embtec/sitemap.xml
