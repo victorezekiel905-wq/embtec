@@ -1,40 +1,47 @@
-# Embtec Konzultz — website
+# Embtec Konzultz website
 
-The website for **Embtec Konzultz**, a computer training school and business centre on
-Ogunfayo Rd, Eputu Town, Ibeju-Lekki, Lagos.
+The website for **Embtec Konzultz**, a computer school and business centre on
+Ogunfayo Road, Eputu Town, Ibeju-Lekki, Lagos.
 
 Live: https://victorezekiel905-wq.github.io/embtec/
 
-## Stack
+## How it's built
 
-Hand-coded HTML, CSS and vanilla JavaScript. No build step, no frameworks, no dependencies.
+A plain static website: HTML, CSS and a small amount of JavaScript. There is no framework,
+no build step and nothing to install. `index.html` is the first page.
 
 ```
-index.html          Home: programmes, the lab, services, reviews, enrolment, FAQ, contact
-courses.html        Full curriculum for each programme
-contact.html        Enquiry form (opens WhatsApp with the message pre-filled) + map
-404.html            Self-contained not-found page for GitHub Pages
-assets/css/style.css
-assets/js/main.js   Mobile menu, scroll reveals, hero typing demo, WhatsApp form
-assets/img/         Logo, campus photos, app icons, social share image
+index.html            Home page
+courses.html          Course outlines
+contact.html          Enquiry form (opens WhatsApp with the message filled in) and map
+404.html              Page shown for broken links (self-contained on purpose)
+assets/css/style.css  All styles
+assets/js/main.js     Mobile menu, WhatsApp shortcut, enquiry form
+assets/img/           Logo, lab photos (several sizes each), icons, share image
 ```
 
-## Run locally
+Fonts come from Google Fonts: Newsreader (headlines), Archivo (text) and
+JetBrains Mono (the code sample).
 
-Open `index.html` in a browser, or serve the folder:
+## Viewing it locally
+
+Double-click `index.html`, or serve the folder so links behave exactly as they do online:
 
 ```bash
 npx serve .
 ```
 
-## Deploy
+## Publishing
 
-GitHub Pages publishes the `main` branch automatically. Push to `main` and the site
-updates within a minute or two.
+GitHub Pages publishes the `main` branch. Push to `main` and the live site updates within
+a minute or two.
 
 ## Updating content
 
-- **Phone / WhatsApp:** search for `2348029596214` and `0802 959 6214`.
-- **Courses:** each programme is a `<section class="course">` in `courses.html`.
-- **Photos:** add images to `assets/img/` (WebP, around 680px wide or larger) and reference them in `index.html`.
-- **Custom domain:** if you add one, update the `canonical`/`og:url` tags, `robots.txt` and `sitemap.xml`.
+- **Phone and WhatsApp:** search the HTML files for `2348029596214` and `0802&nbsp;959&nbsp;6214`.
+- **Courses:** each course is a `<section class="course">` in `courses.html`. The short list on
+  the home page is the `course-index` list in `index.html`.
+- **Photos:** each photo is saved at several widths (for example `workstations-900.webp`,
+  `-1400`, `-2000`) and the browser picks the right one. Add new photos the same way.
+- **Custom domain:** if you add one, update the `canonical` and `og:` tags, `robots.txt` and
+  `sitemap.xml`.
