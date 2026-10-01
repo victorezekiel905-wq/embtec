@@ -23,7 +23,7 @@ assets/img/          Logo, lab photos, course and service photos, icons, share i
 assets/video/        Hero video (wide for desktop, tall for phones) and poster frames
 ```
 
-Fonts: Clash Display (headlines) and Satoshi (text), loaded from Fontshare.
+Font: Satoshi, loaded from Fontshare.
 The hero video is cut from Embtec's own Instagram reels. Course and service photos marked as
 stock come from Unsplash (free for commercial use).
 
