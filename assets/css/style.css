@@ -314,10 +314,12 @@ h4 {
   position: fixed;
   inset: 0 0 auto;
   z-index: 100;
-  transition: transform 0.5s var(--ease), background-color 0.35s, box-shadow 0.35s;
+  background: #fff;
+  box-shadow: 0 1px 0 var(--line), 0 10px 30px -18px rgba(13, 17, 48, 0.25);
+  transition: transform 0.5s var(--ease);
 }
 .site-header.is-solid {
-  background: rgba(255, 255, 255, 0.92);
+  background: #fff;
   -webkit-backdrop-filter: saturate(1.6) blur(16px);
   backdrop-filter: saturate(1.6) blur(16px);
   box-shadow: 0 1px 0 var(--line), 0 10px 30px -18px rgba(13, 17, 48, 0.25);
@@ -435,8 +437,8 @@ h4 {
   isolation: isolate;
   display: flex;
   align-items: flex-end;
-  min-height: clamp(560px, 78svh, 760px);
-  padding: calc(var(--header-h) + 40px) 0 clamp(32px, 4vw, 48px);
+  align-items: center;
+  padding: calc(var(--header-h) + clamp(48px, 6.5vw, 88px)) 0 clamp(48px, 6vw, 84px);
   overflow: hidden;
   background: var(--navy-950);
   color: #fff;
@@ -470,7 +472,7 @@ h4 {
   mix-blend-mode: screen;
 }
 
-.hero-content { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 40px; }
+.hero-content { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 40px; }
 .hero-copy { max-width: 640px; }
 .hero-meta {
   display: inline-flex;
@@ -1211,23 +1213,6 @@ a.info:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 .footer-col ul { display: grid; gap: 12px; }
 .footer-col a { transition: color 0.2s; }
 .footer-col a:hover { color: var(--gold); }
-.site-footer .footer-word {
-  margin-top: clamp(48px, 7vw, 96px);
-  font-family: var(--display);
-  font-size: clamp(2.4rem, 10.4vw, 9rem);
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -0.055em;
-  white-space: nowrap;
-  background: linear-gradient(90deg, var(--gold), #ff8a7a, #b6a3ff, var(--sky), var(--gold));
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: sheen 14s linear infinite;
-  user-select: none;
-}
-@keyframes sheen { to { background-position: 200% 0; } }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line-dark); }
 
 /* ---------- WhatsApp shortcut ---------- */
@@ -1325,9 +1310,11 @@ a.info:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
   .hero-proof { grid-template-columns: minmax(0, 1fr); }
   .hero-proof li { padding: 14px 0 0; }
   .hero-proof li + li { border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 14px; }
-  .hero .badge { top: auto; bottom: clamp(28px, 4vw, 44px); width: 80px; height: 80px; }
+  .hero { padding-top: calc(var(--header-h) + 84px); }
+  .hero .badge { top: calc(var(--header-h) + 16px); width: 44px; height: 44px; }
+  .hero .badge svg.ring { display: none; }
   .hero .badge svg.ring text { font-size: 12.5px; }
-  .hero .badge .core { width: 38px; height: 38px; }
+  .hero .badge .core { width: 44px; height: 44px; }
   .hero .badge .core .icon { width: 15px; height: 15px; }
 
   .course-grid,

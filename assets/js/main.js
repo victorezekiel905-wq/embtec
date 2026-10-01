@@ -20,9 +20,8 @@
 
   function onScroll() {
     var y = window.scrollY;
-    var solidAt = 40;
     if (header) {
-      header.classList.toggle('is-solid', y > solidAt);
+      header.classList.add('is-solid');
       var hide = y > 480 && y > lastY && !body.classList.contains('menu-open');
       header.classList.toggle('is-hidden', hide);
       body.classList.toggle('header-hidden', hide);
