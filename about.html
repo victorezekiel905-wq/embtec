@@ -24,9 +24,8 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=satoshi@400,500,700&amp;display=swap">
+  <link rel="preload" href="assets/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/satoshi-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
   <script>document.documentElement.classList.add('js');</script>
   <script src="assets/js/main.js" defer></script>
@@ -179,10 +178,11 @@
             <a class="link-arrow" href="tel:+2348029596214"><span>Call&nbsp;0802&nbsp;959&nbsp;6214</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </div>
-        <div class="map map-4x3" data-reveal="right">
-          <a class="fallback" href="https://www.google.com/maps/search/?api=1&amp;query=Embtec%20Konzultz%2C%20Ogunfayo%20Rd%2C%20Eputu%20Town%2C%20Lagos" target="_blank" rel="noopener">Open in Google Maps</a>
-          <iframe title="Map showing Embtec Konzultz on Ogunfayo Road, Eputu Town" src="https://www.google.com/maps?q=Embtec%20Konzultz%2C%20Ogunfayo%20Rd%2C%20Eputu%20Town%2C%20Lagos&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-        </div>
+        <a class="map map-4x3" href="https://www.google.com/maps/dir/?api=1&amp;destination=Embtec%20Konzultz%2C%20Ogunfayo%20Rd%2C%20Eputu%20Town%2C%20Lagos" target="_blank" rel="noopener" data-reveal="right" aria-label="Open directions to Embtec Konzultz in Google Maps">
+          <img src="assets/img/map-900.webp" srcset="assets/img/map-900.webp 900w, assets/img/map-1600.webp 1600w" sizes="(min-width: 1024px) 60vw, 100vw" width="1600" height="900" alt="Map showing Embtec Konzultz on Ogunfayo Road, Eputu Town, just north of the Lekki-Epe Expressway" loading="lazy" decoding="async">
+          <span class="map-cta"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Get directions</span>
+          <small class="map-credit">© OpenStreetMap contributors</small>
+        </a>
       </div>
     </section>
 

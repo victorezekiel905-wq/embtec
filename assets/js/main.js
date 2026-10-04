@@ -12,22 +12,14 @@
     requestAnimationFrame(function () { body.classList.add('is-loaded'); });
   });
 
-  /* ---------------- Header: solid after the hero, hides on scroll down ---------------- */
+  /* ---------------- Header stays put; WhatsApp shortcut appears after scrolling ---------------- */
   var header = document.querySelector('.site-header');
   var wa = document.querySelector('.wa');
-  var lastY = window.scrollY;
   var ticking = false;
 
   function onScroll() {
     var y = window.scrollY;
-    if (header) {
-      header.classList.add('is-solid');
-      var hide = y > 480 && y > lastY && !body.classList.contains('menu-open');
-      header.classList.toggle('is-hidden', hide);
-      body.classList.toggle('header-hidden', hide);
-    }
     if (wa) wa.classList.toggle('is-visible', y > 500);
-    lastY = y;
     ticking = false;
   }
   window.addEventListener('scroll', function () {
@@ -44,7 +36,6 @@
     menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     menu.inert = !open;
     body.classList.toggle('menu-open', open);
-    if (open && header) header.classList.add('is-solid');
     if (!open) onScroll();
   }
   if (menuBtn && menu) {
@@ -68,10 +59,18 @@
     var src = tall ? video.getAttribute('data-tall') : video.getAttribute('data-wide');
     var poster = tall ? video.getAttribute('data-tall-poster') : video.getAttribute('data-wide-poster');
     if (poster) video.setAttribute('poster', poster);
-    if (!reduce) {
+    // Start the video only after the page has finished loading, so text and images come first.
+    // On data-saver or very slow connections the poster image stays instead.
+    var conn = navigator.connection || {};
+    var slow = conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '');
+    var startVideo = function () {
       video.src = src;
       var play = video.play();
       if (play && play.catch) play.catch(function () { if (toggle) toggle.classList.add('is-paused'); });
+    };
+    if (!reduce && !slow) {
+      if (document.readyState === 'complete') setTimeout(startVideo, 300);
+      else window.addEventListener('load', function () { setTimeout(startVideo, 300); });
     } else if (toggle) {
       toggle.classList.add('is-paused');
     }
@@ -182,7 +181,12 @@
         if (entry.isIntersecting && map[entry.target.id]) {
           subLinks.forEach(function (a) { a.classList.remove('is-active'); });
           map[entry.target.id].classList.add('is-active');
-          map[entry.target.id].scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduce ? 'auto' : 'smooth' });
+          // Scroll the tab strip sideways only; never move the page.
+          var link = map[entry.target.id];
+          var strip = link.closest('ul');
+          if (strip && strip.scrollWidth > strip.clientWidth) {
+            strip.scrollTo({ left: link.offsetLeft - (strip.clientWidth - link.offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' });
+          }
         }
       });
     }, { rootMargin: '-45% 0px -50% 0px' });

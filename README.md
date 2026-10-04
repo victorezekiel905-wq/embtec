@@ -14,7 +14,7 @@ install. `index.html` is the first page.
 index.html      Home (video hero, courses, why Embtec, lab gallery, enrolment, reviews, services)
 about.html      About, approach, the lab, location
 courses.html    Full outline for each course
-services.html   Cybercafé, printing and photocopy, financial advisory
+services.html   Cybercafé, printing and photocopy, office space
 contact.html    Enquiry form (opens WhatsApp with the message filled in), map, FAQ
 404.html        Shown for broken links (self-contained on purpose)
 assets/css/style.css
@@ -23,7 +23,8 @@ assets/img/          Logo, lab photos, course and service photos, icons, share i
 assets/video/        Hero video (wide for desktop, tall for phones) and poster frames
 ```
 
-Font: Satoshi, loaded from Fontshare.
+Font: Satoshi, self-hosted in assets/fonts. Maps are static images built from OpenStreetMap
+(© OpenStreetMap contributors) that link to Google Maps directions.
 The hero video is cut from Embtec's own Instagram reels. Course and service photos marked as
 stock come from Unsplash (free for commercial use).
 
